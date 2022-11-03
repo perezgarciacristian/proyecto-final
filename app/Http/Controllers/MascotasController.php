@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\mascotas;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MascotasController extends Controller
 {
+   
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class MascotasController extends Controller
      */
     public function index()
     {
-        $mascotas = mascotas::all();
+        /*$mascotas = mascotas::all();*/
+        $mascotas = Auth::user()->mascotas;
+    
         return view('mascotas.mascotasindex', compact('mascotas'));
     }
 
@@ -25,7 +31,8 @@ class MascotasController extends Controller
      */
     public function create()
     {
-        return view('mascotas.mascotasCreate');
+        $users = User::all();
+        return view('mascotas.mascotasCreate', compact('users'));
     }
 
     /**
@@ -40,8 +47,10 @@ class MascotasController extends Controller
            'Nombre' => 'required',
            'Edad'=> 'required',
            'Genero'=> 'required',
+           'Animal'=> 'required',
         ]);
 
+        /*$request->merge(['user_id'=> Auth::id()]);*/
         mascotas::create($request->all());
 
         return redirect('/mascotas');
@@ -84,6 +93,7 @@ class MascotasController extends Controller
             'Nombre' => 'required',
             'Edad'=> 'required',
             'Genero'=> 'required',
+            'Animal'=> 'required',
          ]);
 
          //$mascotas->Nombre = $request->Nombre;

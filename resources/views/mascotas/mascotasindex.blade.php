@@ -1,30 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-template titulo='Listado de Animales'>
 
- <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Listado de Animales </title>
- </head>
 
- <body>
-    <h1>Listado de Animales</h1>
-    <table>
-         <td>
-              <th>Nombre</th>
-              <th>Edad</th>
-              <th>Genero</th>
-          </td>
- 
+    <table class="table table-striped table-dark">
+    <thead>
+         <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Usuario</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Genero</th>
+              <th scope="col">Animal</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+          </tr>
+          </thead>
          @foreach ($mascotas as $mascota)
          <tr>
           <td>{{$mascota->id}}</td>
+          <td>{{$mascota->user->name}}</td>
+          <td>
+            <a href="/mascotas/{{$mascota->id}}">
+               {{$mascota->Nombre}}
+            </a>
+          </td>
 
-
-           <td>{{$mascota->Nombre}}</td>
+           
            <td>{{$mascota->Edad}}</td>
            <td>{{$mascota->Genero}}</td>
+           <td>{{$mascota->Animal}}</td>
            <td><a href="/mascotas/{{$mascota->id}}/edit">Editar</a></td>
 
 
@@ -43,7 +46,4 @@
 
          </td>
     </table>
-
- </body>
-
-</html>
+</x-template>

@@ -4,18 +4,17 @@
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Mascotas</title>
-   <link rel="stylesheet" href="/mascotas">
+   <title>Editar Comprador</title>
+   <link rel="stylesheet" href="/comprador">
   </head>
   <body>
   
-   <form action="/mascotas/{{$mascota->id}}" method="POST">
+   <form action="/comprador/{{$comprador->id}}" method="post">
     @csrf
     @method('patch')
-    
     <div>
     <label for="Nombre">Nombre:</label>
-    <input type="text"  name="Nombre" value="{{$mascota->Nombre}}">
+    <input type="text"  name="Nombre" value="{{$comprador->Nombre}}">
     </div>
     
     <div>
@@ -27,21 +26,16 @@
 
     
     <div>
-    <p>Genero:
-        <input name="Genero" type="radio" value="M">M
-        <input  name="Genero"type="radio" value="F">F
-      </p>
-    </div>
-    
-    <div>
-    <label for="Animal">Animal:</label>
-    <select name="Animal" id="identified">
+    <label for="Mascota">Mascota:</label>
+    <select name="Mascota" id="identified">
         <option value="Perro">Perro</option>
         <option value="Gato">Gato</option>
         <option value="Pez">Pez</option>
-        <option value="Otro">Otro</option>
+        <option value="Otra">Otra</option>
       </select>
     </div>
+
+    
 
   <div>
   

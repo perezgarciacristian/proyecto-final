@@ -25,5 +25,10 @@ class mascotas extends Model
     {
         return $this->belongsToMany(Seller::class);
     }
+
+    public function vaccines()
+    {
+        return $this->belongsToMany(Vaccines::class);
+    }
 }
 

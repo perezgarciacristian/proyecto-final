@@ -31,11 +31,11 @@ Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeF
 
 Route::resource('/mascotas', MascotasController::class)->middleware('auth');
 
-Route::resource('/comprador', CompradorController::class);
+Route::resource('/comprador', CompradorController::class)->middleware('auth');
 
-Route::resource('/seller', SellerController::class);
+Route::resource('/seller', SellerController::class)->middleware('auth');
 
-Route::resource('/vaccines', VaccinesController::class);
+Route::resource('/vaccines', VaccinesController::class)->middleware('auth');
 
 
 Route::get('/landing', function() {
@@ -51,3 +51,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

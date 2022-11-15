@@ -8,6 +8,7 @@
               <th scope="col">Nombre</th>
               <th scope="col">Edad</th>
               <th scope="col">Mascota</th>
+              <th scope="col">Compradores</th>
               <th scope="col">Editar</th>
               <th scope="col">Eliminar</th>
           </tr>

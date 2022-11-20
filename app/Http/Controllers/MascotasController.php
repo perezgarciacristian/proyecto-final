@@ -6,6 +6,8 @@ use App\Models\mascotas;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Comprador;
+use App\Models\Seller;
 
 class MascotasController extends Controller
 {
@@ -22,6 +24,7 @@ class MascotasController extends Controller
         $mascotas = Auth::user()->mascotas;
     
         return view('mascotas.mascotasindex', compact('mascotas'));
+        
     }
 
     /**
@@ -32,7 +35,9 @@ class MascotasController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('mascotas.mascotasCreate', compact('users'));
+        $Comprador = Comprador::all();
+        $Seller = Seller::all();
+        return view('mascotas.mascotasCreate', compact('users','Comprador','Seller'));
     }
 
     /**

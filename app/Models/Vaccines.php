@@ -15,4 +15,9 @@ class Vaccines extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function mascotas()
+    {
+        return $this->belongsToMany(Mascota::class);
+    }
 }

@@ -1,5 +1,15 @@
 <x-template titulo='Listado de Vacunas'>
-
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      Vacunas
+    </a>
+      <ul class="navbar-nav ms-auto">
+          <li>
+            <a class="btn btn-outline-light" href="/vaccines/create" role="button">Añadir Vacuna</a>
+            <a class="btn btn-outline-light" href="/menu" role="button">INICIO</a>
+          </li>
+      </ul>
+  </nav>
        <table class="table table-striped table-dark">
          <tr>
               <th scope="col">ID</th>

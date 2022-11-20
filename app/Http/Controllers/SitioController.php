@@ -42,5 +42,11 @@ class SitioController extends Controller
     {
         return view('landingpage');
     }
+
+    public function menu() 
+    {
+        return view('menu.menu');
+    }
+
 }
 

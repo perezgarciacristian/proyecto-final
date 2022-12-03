@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class VaccinesController extends Controller
+class VaccineController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class VaccinesController extends Controller
      */
     public function index()
     {
-        
+
         $vaccines = Auth::user()->vaccines;
-    
+
         return view('vaccines.vaccinesindex', compact('vaccines'));
     }
 
@@ -43,15 +43,14 @@ class VaccinesController extends Controller
     {
         $request->validate([
             'Tipo' => 'required',
-            'Descripcion'=> 'required',
-            'Componentes'=> 'required',
-         ]);
- 
-         /*$request->merge(['user_id'=> Auth::id()]);*/
-         vaccines::create($request->all());
- 
-         return redirect('/vaccines');
- 
+            'Descripcion' => 'required',
+            'Componentes' => 'required',
+        ]);
+
+        /*$request->merge(['user_id'=> Auth::id()]);*/
+        vaccines::create($request->all());
+
+        return redirect('/vaccines');
     }
 
     /**
@@ -88,13 +87,13 @@ class VaccinesController extends Controller
         //dd($request->all());
         $request->validate([
             'Tipo' => 'required',
-            'Descripcion'=> 'required',
-            'Componentes'=> 'required',
-         ]);
- 
-         Vaccines::where('id', $vaccine->id)->update($request->except('_token','_method'));
+            'Descripcion' => 'required',
+            'Componentes' => 'required',
+        ]);
 
-         return redirect('/vaccines');
+        Vaccines::where('id', $vaccine->id)->update($request->except('_token', '_method'));
+
+        return redirect('/vaccines');
     }
 
     /**

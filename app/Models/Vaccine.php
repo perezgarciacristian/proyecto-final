@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comprador extends Model
+class Vaccine extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre','user_id','Edad', 'Mascota'];
+    protected $fillable = ['Tipo', 'user_id', 'Descripcion', 'Componentes'];
+    /*public $timestamps = false;*/
 
     public function user()
     {

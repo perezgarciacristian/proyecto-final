@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vaccines extends Model
+class Buyer extends Model
 {
     use HasFactory;
-    protected $fillable = ['Tipo', 'user_id', 'Descripcion', 'Componentes'];
-    /*public $timestamps = false;*/
+    protected $fillable = ['Nombre', 'user_id', 'Edad', 'Mascota'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function mascotas()
+    public function pets()
     {
-        return $this->belongsToMany(Mascota::class);
+        return $this->belongsToMany(Pet::class);
     }
 }

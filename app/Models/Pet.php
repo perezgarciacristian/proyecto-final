@@ -5,18 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class mascotas extends Model
+class Pet extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre','user_id', 'Edad', 'Genero','Animal'];
-    /*public $timestamps = false;*/
+    protected $fillable = ['Nombre', 'user_id', 'Edad', 'Genero', 'Animal'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comprador()
+    public function buyers()
     {
         return $this->belongsToMany(Comprador::class);
     }
@@ -28,7 +27,10 @@ class mascotas extends Model
 
     public function vaccines()
     {
-        return $this->belongsToMany(Vaccines::class);
+        return $this->belongsToMany(Vaccine::class);
+    }
+    public function archivo()
+    {
+        return $this->hasOne(Archivo::class);
     }
 }
-

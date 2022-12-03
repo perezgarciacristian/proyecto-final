@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comprador extends Model
+class Buyer extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre','user_id','Edad', 'Mascota'];
+    protected $fillable = ['Nombre', 'user_id', 'Edad', 'Mascota'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function mascotas()
+    public function pets()
     {
-        return $this->belongsToMany(Mascota::class);
+        return $this->belongsToMany(Pet::class);
     }
 }

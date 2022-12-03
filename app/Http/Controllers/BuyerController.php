@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comprador;
+use App\Models\Buyer;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class CompradorController extends Controller
+class BuyerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CompradorController extends Controller
      */
     public function index()
     {
-        /*$comprador = Comprador::all();*/
+
         $comprador = Auth::user()->comprador;
         return view('comprador.compradorindex', compact('comprador'));
     }
@@ -29,7 +29,7 @@ class CompradorController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('comprador.compradorCreate',compact('users'));
+        return view('comprador.compradorCreate', compact('users'));
     }
 
     /**
@@ -42,12 +42,12 @@ class CompradorController extends Controller
     {
         $request->validate([
             'Nombre' => 'required',
-            'Edad'=> 'required',
-            'Mascota'=> 'required',
-         ]);
- 
-         Comprador::create($request->all());
-         return redirect('/comprador');
+            'Edad' => 'required',
+            'Mascota' => 'required',
+        ]);
+
+        Buyer::create($request->all());
+        return redirect('/comprador');
     }
 
     /**
@@ -56,7 +56,7 @@ class CompradorController extends Controller
      * @param  \App\Models\Comprador  $comprador
      * @return \Illuminate\Http\Response
      */
-    public function show(Comprador $comprador)
+    public function show(Buyer $comprador)
     {
         return view('comprador.compradorShow', compact('comprador'));
     }
@@ -67,7 +67,7 @@ class CompradorController extends Controller
      * @param  \App\Models\Comprador  $comprador
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comprador $comprador)
+    public function edit(Buyer $comprador)
     {
         return view('comprador.compradoredit', compact('comprador'));
     }
@@ -79,18 +79,18 @@ class CompradorController extends Controller
      * @param  \App\Models\Comprador  $comprador
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comprador $comprador)
+    public function update(Request $request, Buyer $comprador)
     {
         $request->validate([
             'Nombre' => 'required',
-            'Edad'=> 'required',
-            'Mascota'=> 'required',
-         ]);
+            'Edad' => 'required',
+            'Mascota' => 'required',
+        ]);
 
-        
-         Comprador::where('id', $comprador->id)->update($request->except('_token','_method'));
 
-         return redirect('/comprador');
+        Buyer::where('id', $comprador->id)->update($request->except('_token', '_method'));
+
+        return redirect('/comprador');
     }
 
     /**
@@ -99,7 +99,7 @@ class CompradorController extends Controller
      * @param  \App\Models\Comprador  $comprador
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comprador $comprador)
+    public function destroy(Buyer $comprador)
     {
         $comprador->delete();
         return redirect('/comprador');

@@ -59,9 +59,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function mascotas()
+    public function pets()
     {
-        return $this->hasMany(mascotas::class);
+        return $this->hasMany(Pet::class);
     }
 
     public function seller()
@@ -79,4 +79,3 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Vaccines::class);
     }
 }
-

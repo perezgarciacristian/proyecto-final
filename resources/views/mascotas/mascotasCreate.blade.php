@@ -1,68 +1,72 @@
 <x-template titulo='Formulario Mascotas'>
 
 
-   <form action="/mascotas" method="post">
-    @csrf
+    <form action="/mascotas" method="post" enctype="multipart/form-data">
+        @csrf
 
-    <div>
-    <label for="Nombre">Nombre:</label>
-    <input type="text"  name="Nombre" required>
-</div>
-    
-    <div>
-     <p>Edad:
-      <input type="radio" name="Edad" value="menor"> Menor
-      <input type="radio" name="Edad" value="adulto" required> Adulto 
-      </p>
-</div>
+        <div>
+            <label for="Nombre">Nombre:</label>
+            <input type="text" name="Nombre" value="{{ old('Nombre') ?? '' }}" required>
+        </div>
 
-    
-    <div>
-    <p>Genero:
-        <input name="Genero" type="radio" value="M">M
-        <input  name="Genero"type="radio" value="F" required>F
-      </p>
-</div>
+        <div>
+            <label>Edad:</label>
+            <label for="">Menor</label>
+            <input type="radio" name="Edad" value="menor">
+            <label for="">Adulto</label>
+            <input type="radio" name="Edad" value="adulto" required>
+        </div>
+        <div>
+            <label>Genero:</label>
+            <label for="">M</label>
+            <input name="Genero" type="radio" value="M">
+            <label for="">F</label>
+            <input name="Genero"type="radio" value="F" required>
+        </div>
 
-<div>
-    <label for="Animal">Animal:</label>
-    <select name="Animal" id="identified">
-        <option value="Perro">Perro</option>
-        <option value="Gato">Gato</option>
-        <option value="Pez">Pez</option>
-        <option value="Otro">Otro</option>
-      </select>
-    </div>
-   
-    <div>
-   <select name="user_id" id="user_id">
-    @foreach($users as $user)
-       <option   value="{{$user->id}}">{{$user->name}}</option>
-    @endforeach
-   </select>
-   </div>
+        <div>
+            <label for="Animal">Animal:</label>
+            <select name="Animal" id="identified">
+                <option value="Perro">Perro</option>
+                <option value="Gato">Gato</option>
+                <option value="Pez">Pez</option>
+                <option value="Otro">Otro</option>
+            </select>
+        </div>
 
-   <div>
-   <select name="comprador_id" id="user_id">
-    @foreach($Comprador as $comprador)
-       <option   value="{{$comprador->id}}">{{$comprador->Nombre}}</option>
-    @endforeach
+        <div>
+            <label for="">Usuario</label>
+            <select name="user_id" id="user_id">
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
-   </select>
-   </div>
+        <div>
+            <label for="">Comprador</label>
+            <select name="comprador_id" id="user_id">
+                @foreach ($compradores as $comprador)
+                    <option value="{{ $comprador->id }}">{{ $comprador->Nombre }}</option>
+                @endforeach
 
+            </select>
+        </div>
+        <div>
+            <label for="">Vendedor</label>
+            <select name="seller_id" id="user_id">
+                @foreach ($sellers as $seller)
+                    <option value="{{ $seller->id }}">{{ $seller->Nombre }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div>
+            <label for="">Foto de la mascota</label>
+            <input type="file" name="archivo">
+        </div>
 
-<div>
-   <select name="seller_id" id="user_id">
-    @foreach($Seller as $seller)
-       <option   value="{{$seller->id}}">{{$seller->Nombre}}</option>
-    @endforeach
+        <input type="submit" value="Registrar">
 
-   </select>
-   </div>
-  
-  <input type="submit" value="Registrar"> 
- 
-</form>
+    </form>
 
 </x-template>

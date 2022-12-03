@@ -1,8 +1,7 @@
 <?php
 
 use App\Http\Controllers\SitioController;
-use App\Http\Controllers\MascotasController;
-use App\Http\Controllers\CompradorController;
+use App\Http\Controllers\PetController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\VaccinesController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
 
     return view('welcome');
 });
@@ -29,16 +28,16 @@ Route::get('/Contacto/{codigo?}', [SitioController::class, 'Crush']);
 
 Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeFormContacto']);
 
-Route::resource('/mascotas', MascotasController::class)->middleware('auth');
+Route::resource('/pet', PetController::class)->middleware('auth');
 
-Route::resource('/comprador', CompradorController::class)->middleware('auth');
+Route::resource('/buyer', BuyerController::class)->middleware('auth');
 
 Route::resource('/seller', SellerController::class)->middleware('auth');
 
 Route::resource('/vaccines', VaccinesController::class)->middleware('auth');
 
 
-Route::get('/landing', function() {
+Route::get('/landing', function () {
 
     return view('landing');
 });
@@ -54,4 +53,4 @@ Route::middleware([
 
 Route::get('/menu', [SitioController::class, 'menu']);
 
-Route::get('/mascotas/envia-correo/{mascotas}', [MascotasController::class, 'enviaCorreo'])->name('mascota.envia-correo');
+Route::get('/mascotas/envia-correo/{mascotas}', [PetController::class, 'enviaCorreo'])->name('mascota.envia-correo');

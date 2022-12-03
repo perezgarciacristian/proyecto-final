@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMascotasTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateMascotasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mascotas', function (Blueprint $table) {
+        Schema::create('archivos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->string('Nombre');
-            $table->string('Edad');
-            $table->string('Genero');
-            $table->string('Animal');
+            $table->foreignId('pet_id')->constrained()->onDelete('cascade');
+            $table->string('ubicacion');
+            $table->string('nombre_original');
+            $table->string('mime');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateMascotasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mascotas');
+        Schema::dropIfExists('archivos');
     }
-}
+};

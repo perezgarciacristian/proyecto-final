@@ -29,4 +29,8 @@ class Pet extends Model
     {
         return $this->belongsToMany(Vaccine::class);
     }
+    public function archivo()
+    {
+        return $this->hasOne(Archivo::class);
+    }
 }

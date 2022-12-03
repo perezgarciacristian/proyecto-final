@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class PetController extends Controller
 {
-    const HOME = '/mascotas';
+    const HOME = '/pet';
 
     /**
      * Display a listing of the resource.
@@ -22,9 +22,9 @@ class PetController extends Controller
      */
     public function index()
     {
-        $mascotas = Auth::user()->pets;
+        $pets = Auth::user()->pets;
 
-        return view('mascotas.mascotasindex', compact('mascotas'));
+        return view('pet.petIndex', compact('pets'));
     }
 
     /**
@@ -35,9 +35,9 @@ class PetController extends Controller
     public function create()
     {
         $users = User::all();
-        $compradores = Buyer::all();
+        $buyers = Buyer::all();
         $sellers = Seller::all();
-        return view('mascotas.mascotasCreate', compact('users', 'compradores', 'sellers'));
+        return view('pet.petCreate', compact('users', 'buyers', 'sellers'));
     }
 
     /**
@@ -53,21 +53,18 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
+            'archivo' => 'sometimes|image'
         ]);
 
-        Pet::create($request->all());
-        if ($request->file('archivo')->isValid()) {
-            $ubicacion = $request->archivo->store('mascota_image');
+        $pet = Pet::create($request->all());
+        if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
+            $ubicacion = $request->archivo->store('public');
             $archivo = new Archivo();
-            $archivo->task_id = $request->task_id;
+            $archivo->pet_id = $request->pet_id;
             $archivo->ubicacion = $ubicacion;
             $archivo->nombre_original = $request->archivo->getClientOriginalName();
             $archivo->mime = $request->archivo->getClientMimeType();
-            $archivo->save();
-            $student = User::find(Auth::id())->userable;
-            $student->tasks()->updateExistingPivot($request->task_id, [
-                'fileUploaded' => $archivo->ubicacion,
-            ]);
+            $pet->archivo()->save($archivo);
         }
 
         return redirect(self::HOME);
@@ -76,33 +73,33 @@ class PetController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Pet  $mascotas
+     * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function show(Pet $mascota)
+    public function show(Pet $pet)
     {
-        return view('mascotas.mascotasShow', compact('mascota'));
+        return view('pet.petShow', compact('pet'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Pet  $mascotas
+     * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pet $mascota)
+    public function edit(Pet $pet)
     {
-        return view('mascotas.mascotasedit', compact('mascota'));
+        return view('pet.petEdit', compact('pet'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Pet  $mascotas
+     * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pet $mascota)
+    public function update(Request $request, Pet $pet)
     {
         $request->validate([
             'Nombre' => 'required',
@@ -111,7 +108,7 @@ class PetController extends Controller
             'Animal' => 'required',
         ]);
 
-        Pet::where('id', $mascota->id)->update($request->except('_token', '_method'));
+        Pet::where('id', $pet->id)->update($request->except('_token', '_method'));
 
         return redirect(self::HOME);
     }
@@ -119,12 +116,12 @@ class PetController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Pet  $mascotas
+     * @param  \App\Models\Pet  $pet
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pet $mascota)
+    public function destroy(Pet $pet)
     {
-        $mascota->delete();
+        $pet->delete();
         return redirect(self::HOME);
     }
 }

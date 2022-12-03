@@ -1,7 +1,7 @@
 <x-template titulo='Formulario Mascotas'>
 
 
-    <form action="/mascotas" method="post" enctype="multipart/form-data">
+    <form action="/pet" method="post" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -46,8 +46,8 @@
         <div>
             <label for="">Comprador</label>
             <select name="comprador_id" id="user_id">
-                @foreach ($compradores as $comprador)
-                    <option value="{{ $comprador->id }}">{{ $comprador->Nombre }}</option>
+                @foreach ($buyers as $buyer)
+                    <option value="{{ $buyer->id }}">{{ $buyer->Nombre }}</option>
                 @endforeach
 
             </select>

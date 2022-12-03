@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\SitioController;
-use App\Http\Controllers\MascotasController;
-use App\Http\Controllers\CompradorController;
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\SellerController;
-use App\Http\Controllers\VaccinesController;
+use App\Http\Controllers\VaccineController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,13 +29,13 @@ Route::get('/Contacto/{codigo?}', [SitioController::class, 'Crush']);
 
 Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeFormContacto']);
 
-Route::resource('/mascotas', MascotasController::class)->middleware('auth');
+Route::resource('/pet', PetController::class)->middleware('auth');
 
-Route::resource('/comprador', CompradorController::class)->middleware('auth');
+Route::resource('/buyer', BuyerController::class)->middleware('auth');
 
 Route::resource('/seller', SellerController::class)->middleware('auth');
 
-Route::resource('/vaccines', VaccinesController::class)->middleware('auth');
+Route::resource('/vaccine', VaccineController::class)->middleware('auth');
 
 
 Route::get('/landing', function () {

@@ -55,10 +55,10 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
 	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="/mascotas" class="nav-link">Mascotas</a></li>
-	        	<li class="nav-item"><a href="/comprador" class="nav-link">Comprador</a></li>
+	        	<li class="nav-item"><a href="/pet" class="nav-link">Mascotas</a></li>
+	        	<li class="nav-item"><a href="/buyer" class="nav-link">Comprador</a></li>
 	        	<li class="nav-item"><a href="/seller" class="nav-link">Vendedor</a></li>
-	          <li class="nav-item"><a href="/vaccines" class="nav-link">Vacunas</a></li>
+	          <li class="nav-item"><a href="/vaccine" class="nav-link">Vacunas</a></li>
 	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>

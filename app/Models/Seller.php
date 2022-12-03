@@ -16,8 +16,8 @@ class Seller extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function mascotas()
+    public function pets()
     {
-        return $this->belongsToMany(Mascota::class);
+        return $this->belongsToMany(Pet::class);
     }
 }

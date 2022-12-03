@@ -5,11 +5,11 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Editar Vacunas</title>
-   <link rel="stylesheet" href="/vaccines">
+   <link rel="stylesheet" href="/vaccine">
   </head>
   <body>
   
-  <form action="/vaccines/{{$vaccine->id}}" method="POST">
+  <form action="/vaccine/{{$vaccine->id}}" method="POST">
     @csrf
     @method('patch')
     <div>

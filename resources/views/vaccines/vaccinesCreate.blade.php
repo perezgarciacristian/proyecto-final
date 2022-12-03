@@ -1,7 +1,7 @@
 <x-template titulo='Formulario Vacunas'>
 
 
-   <form action="/vaccines" method="post">
+   <form action="/vaccine" method="post">
     @csrf
 
     <div>

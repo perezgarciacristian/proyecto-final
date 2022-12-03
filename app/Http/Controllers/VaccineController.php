@@ -50,7 +50,7 @@ class VaccineController extends Controller
         /*$request->merge(['user_id'=> Auth::id()]);*/
         vaccines::create($request->all());
 
-        return redirect('/vaccines');
+        return redirect('/vaccine');
     }
 
     /**
@@ -93,7 +93,7 @@ class VaccineController extends Controller
 
         Vaccines::where('id', $vaccine->id)->update($request->except('_token', '_method'));
 
-        return redirect('/vaccines');
+        return redirect('/vaccine');
     }
 
     /**
@@ -105,6 +105,6 @@ class VaccineController extends Controller
     public function destroy(Vaccines $vaccine)
     {
         $vaccine->delete();
-        return redirect('/vaccines');
+        return redirect('/vaccine');
     }
 }

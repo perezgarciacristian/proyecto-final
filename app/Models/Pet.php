@@ -17,7 +17,7 @@ class Pet extends Model
 
     public function buyers()
     {
-        return $this->belongsToMany(Comprador::class);
+        return $this->belongsToMany(Buyer::class);
     }
 
     public function sellers()

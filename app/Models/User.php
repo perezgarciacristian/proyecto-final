@@ -59,9 +59,9 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function mascotas()
+    public function pets()
     {
-        return $this->hasMany(mascotas::class);
+        return $this->hasMany(Pet::class);
     }
 
     public function seller()
@@ -69,14 +69,14 @@ class User extends Authenticatable
         return $this->hasMany(Seller::class);
     }
 
-    public function comprador()
+    public function buyer()
     {
-        return $this->hasMany(Comprador::class);
+        return $this->hasMany(Buyer::class);
     }
 
     public function vaccines()
     {
-        return $this->hasMany(Vaccines::class);
+        return $this->hasMany(Vaccine::class);
     }
 }
 

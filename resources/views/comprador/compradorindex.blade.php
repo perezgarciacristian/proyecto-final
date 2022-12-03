@@ -5,7 +5,7 @@
     </a>
       <ul class="navbar-nav ms-auto">
           <li>
-            <a class="btn btn-outline-light" href="/comprador/create" role="button">Añadir Comprador</a>
+            <a class="btn btn-outline-light" href="/buyer/create" role="button">Añadir Comprador</a>
             <a class="btn btn-outline-light" href="/menu" role="button">INICIO</a>
           </li>
       </ul>
@@ -18,29 +18,28 @@
               <th scope="col">Nombre</th>
               <th scope="col">Edad</th>
               <th scope="col">Mascota</th>
-              <th scope="col">Compradores</th>
               <th scope="col">Editar</th>
               <th scope="col">Eliminar</th>
           </tr>
           </thead>
-         @foreach ($comprador as $comprador)
+         @foreach ($buyer as $buyer)
          <tr>
-          <td>{{$comprador->id}}</td>
-          <td>{{$comprador->user->name}}</td>
+          <td>{{$buyer->id}}</td>
+          <td>{{$buyer->user->name}}</td>
           <td>
-            <a href="/comprador/{{$comprador->id}}">
-               {{$comprador->Nombre}}
+            <a href="/buyer/{{$buyer->id}}">
+               {{$buyer->Nombre}}
             </a>
           </td>
 
 
-           <td>{{$comprador->Edad}}</td>
-           <td>{{$comprador->Mascota}}</td>
-           <td><a href="/comprador/{{$comprador->id}}/edit">Editar</a></td>
+           <td>{{$buyer->Edad}}</td>
+           <td>{{$buyer->Mascota}}</td>
+           <td><a href="/buyer/{{$buyer->id}}/edit">Editar</a></td>
 
 
          <td>
-          <form action="/comprador/{{$comprador->id}}" method="POST">
+          <form action="/buyer/{{$buyer->id}}" method="POST">
           @csrf
           @method('DELETE')
           <input type= "Submit" value= "Eliminar">

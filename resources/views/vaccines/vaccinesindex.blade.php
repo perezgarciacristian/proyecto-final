@@ -5,7 +5,7 @@
     </a>
       <ul class="navbar-nav ms-auto">
           <li>
-            <a class="btn btn-outline-light" href="/vaccines/create" role="button">Añadir Vacuna</a>
+            <a class="btn btn-outline-light" href="/vaccine/create" role="button">Añadir Vacuna</a>
             <a class="btn btn-outline-light" href="/menu" role="button">INICIO</a>
           </li>
       </ul>
@@ -21,24 +21,24 @@
               <th scope="col">Eliminar</th>
           </tr>
  
-         @foreach ($vaccines as $vaccines)
+         @foreach ($vaccines as $vaccine)
          <tr>
-          <td>{{$vaccines->id}}</td>
-          <td>{{$vaccines->user->name}}</td>
+          <td>{{$vaccine->id}}</td>
+          <td>{{$vaccine->user->name}}</td>
           <td>
-            <a href="/vaccines/{{$vaccines->id}}">
-               {{$vaccines->Tipo}}
+            <a href="/vaccine/{{$vaccine->id}}">
+               {{$vaccine->Tipo}}
             </a>
           </td>
 
            
-           <td>{{$vaccines->Descripcion}}</td>
-           <td>{{$vaccines->Componentes}}</td>
-           <td><a href="/vaccines/{{$vaccines->id}}/edit">Editar</a></td>
+           <td>{{$vaccine->Descripcion}}</td>
+           <td>{{$vaccine->Componentes}}</td>
+           <td><a href="/vaccine/{{$vaccine->id}}/edit">Editar</a></td>
 
 
          <td>
-          <form action="/vaccines/{{$vaccines->id}}" method="POST">
+          <form action="/vaccine/{{$vaccine->id}}" method="POST">
           @csrf
           @method('DELETE')
           <input type= "Submit" value= "Eliminar">

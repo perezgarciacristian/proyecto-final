@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Archivo;
 use App\Models\Pet;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;

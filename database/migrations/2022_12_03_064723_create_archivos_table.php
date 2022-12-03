@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('archivos', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('pet_id')->constrained()->onDelete('cascade');
+            $table->string('ubicacion');
+            $table->string('nombre_original');
+            $table->string('mime');
             $table->timestamps();
         });
     }

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function() {
+Route::get('/', function () {
 
     return view('welcome');
 });
@@ -38,7 +38,7 @@ Route::resource('/seller', SellerController::class)->middleware('auth');
 Route::resource('/vaccines', VaccinesController::class)->middleware('auth');
 
 
-Route::get('/landing', function() {
+Route::get('/landing', function () {
 
     return view('landing');
 });
@@ -52,7 +52,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-<<<<<<< HEAD
+
 Route::get('/menu', [SitioController::class, 'menu']);
-=======
->>>>>>> 6200c80fd3fba620a7612c2a355451996bc3fec4

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Seller extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre','user_id', 'Genero',];
+    protected $fillable = ['Nombre', 'user_id', 'Genero',];
     /*public $timestamps = false;*/
 
     public function user()
@@ -16,8 +16,8 @@ class Seller extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function mascotas()
+    public function sales()
     {
-        return $this->belongsToMany(Mascota::class);
+        return $this->hasMany(Sale::class);
     }
 }

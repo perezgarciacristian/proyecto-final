@@ -8,13 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pet extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre', 'user_id', 'Edad', 'Genero', 'Animal'];
+    protected $fillable = ['Nombre', 'Edad', 'Genero', 'Animal'];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
 
+    //Muchos a muchos
     public function buyers()
     {
         return $this->belongsToMany(Comprador::class);
@@ -29,8 +26,13 @@ class Pet extends Model
     {
         return $this->belongsToMany(Vaccine::class);
     }
+    //Uno a uno
     public function archivo()
     {
         return $this->hasOne(Archivo::class);
+    }
+    public function sale()
+    {
+        return $this->hasOne(Sale::class);
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class BuyerController extends Controller
 {
+    const HOME = '/buyer';
     /**
      * Display a listing of the resource.
      *
@@ -17,8 +18,8 @@ class BuyerController extends Controller
     public function index()
     {
 
-        $comprador = Auth::user()->comprador;
-        return view('comprador.compradorindex', compact('comprador'));
+        $buyers = Buyer::all();
+        return view('comprador.compradorindex', compact('buyers'));
     }
 
     /**
@@ -47,18 +48,18 @@ class BuyerController extends Controller
         ]);
 
         Buyer::create($request->all());
-        return redirect('/comprador');
+        return redirect(self::HOME);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function show(Buyer $comprador)
+    public function show(Buyer $buyer)
     {
-        return view('comprador.compradorShow', compact('comprador'));
+        return view('comprador.compradorShow', compact('buyer'));
     }
 
     /**
@@ -67,19 +68,19 @@ class BuyerController extends Controller
      * @param  \App\Models\Comprador  $comprador
      * @return \Illuminate\Http\Response
      */
-    public function edit(Buyer $comprador)
+    public function edit(Buyer $buyer)
     {
-        return view('comprador.compradoredit', compact('comprador'));
+        return view('comprador.compradoredit', compact('buyer'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Buyer $comprador)
+    public function update(Request $request, Buyer $buyer)
     {
         $request->validate([
             'Nombre' => 'required',
@@ -88,20 +89,20 @@ class BuyerController extends Controller
         ]);
 
 
-        Buyer::where('id', $comprador->id)->update($request->except('_token', '_method'));
+        Buyer::where('id', $buyer->id)->update($request->except('_token', '_method'));
 
-        return redirect('/comprador');
+        return redirect(self::HOME);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Buyer $comprador)
+    public function destroy(Buyer $buyer)
     {
-        $comprador->delete();
-        return redirect('/comprador');
+        $buyer->delete();
+        return redirect(self::HOME);
     }
 }

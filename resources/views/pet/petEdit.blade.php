@@ -3,7 +3,7 @@
         @csrf
         @method('patch')
         <div class="form-group">
-            <label class="form-label " for="Nombre">Nombre:</label>
+            <label class="form-label" for="Nombre">Nombre:</label>
             <input type="text" name="Nombre" value="{{ $pet->Nombre }}">
         </div>
         <div class="form-group">

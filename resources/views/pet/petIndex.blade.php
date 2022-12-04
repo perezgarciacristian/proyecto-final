@@ -20,7 +20,6 @@
                 <th scope="col">Genero</th>
                 <th scope="col">Animal</th>
                 <th scope="col">Foto</th>
-                <th scope="col">Comprador</th>
                 <th scope="col">Vendedor</th>
                 <th scope="col">Vacuna</th>
                 <th scope="col">Editar</th>
@@ -39,11 +38,6 @@
                 <td>{{ $pet->Genero }}</td>
                 <td>{{ $pet->Animal }}</td>
                 <td>
-                    @foreach($pet->buyers as $buyer)
-                       {{$buyer->Nombre}} <br>
-                    @endforeach
-                </td>
-                <td>
                     @if (!empty($pet->archivo))
                         <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200px">
                     @else
@@ -51,14 +45,11 @@
                     @endif
                 </td>
                 <td><a href="/pet/{{ $pet->id }}/edit">Editar</a></td>
-
-
                 <td>
                     <form action="/pet/{{ $pet->id }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <input type="Submit" value="Eliminar">
-
                     </form>
                 </td>
 

@@ -15,8 +15,8 @@ class VaccineSeeder extends Seeder
      */
     public function run()
     {
-        Vaccine::create(['user_id' => '1', 'Tipo' => 'Vacuna Viva', 'Descripcion' => 'Se le aplico esta vacuna con exito', 'Componentes' => 'Antigenos']);
-        Vaccine::create(['user_id' => '2', 'Tipo' => 'Vacuna Muerta', 'Descripcion' => 'Cuidarlo esta vacuna se le aplico y sigue enfermito', 'Componentes' => 'Inactivadores']);
-        Vaccine::create(['user_id' => '3', 'Tipo' => 'Vacuna Muerta', 'Descripcion' => 'Cuidarlo mucho', 'Componentes' => 'Conservantes']);
+        Vaccine::create(['Tipo' => 'Vacuna Viva', 'Descripcion' => 'Se le aplico esta vacuna con exito', 'Componentes' => 'Antigenos']);
+        Vaccine::create(['Tipo' => 'Vacuna Muerta', 'Descripcion' => 'Cuidarlo esta vacuna se le aplico y sigue enfermito', 'Componentes' => 'Inactivadores']);
+        Vaccine::create(['Tipo' => 'Vacuna Muerta', 'Descripcion' => 'Cuidarlo mucho', 'Componentes' => 'Conservantes']);
     }
 }

@@ -29,7 +29,7 @@ Route::get('/Contacto/{codigo?}', [SitioController::class, 'Crush']);
 
 Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeFormContacto']);
 
-Route::resource('/pet', PetController::class)->middleware('auth');
+Route::resource('/pet', PetController::class);
 
 Route::resource('/buyer', BuyerController::class)->middleware('auth');
 

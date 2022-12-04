@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('vaccines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->string('Tipo');
             $table->string('Descripcion');
             $table->string('Componentes');

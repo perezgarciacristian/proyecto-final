@@ -18,8 +18,8 @@ class BuyerSeeder extends Seeder
     public function run()
     {
 
-        Buyer::create(['user_id' => '1', 'Nombre' => 'Thomas', 'Edad' => 'Adulto', 'Mascota' => 'Perro']);
-        Buyer::create(['user_id' => '2', 'Nombre' => 'Betty', 'Edad' => 'Adulto', 'Mascota' => 'Perro']);
-        Buyer::create(['user_id' => '3', 'Nombre' => 'Lilly', 'Edad' => 'Menor', 'Mascota' => 'Gato']);
+        Buyer::create(['Nombre' => 'Thomas', 'Edad' => 'Adulto', 'Mascota' => 'Perro']);
+        Buyer::create(['Nombre' => 'Betty', 'Edad' => 'Adulto', 'Mascota' => 'Perro']);
+        Buyer::create(['Nombre' => 'Lilly', 'Edad' => 'Menor', 'Mascota' => 'Gato']);
     }
 }

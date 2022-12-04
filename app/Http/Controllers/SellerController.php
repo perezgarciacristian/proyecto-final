@@ -16,8 +16,8 @@ class SellerController extends Controller
      */
     public function index()
     {
-        $Seller = Auth::user()->seller;
-    
+        $Seller = Seller::With('user')->get();
+
         return view('Seller.sellerindex', compact('Seller'));
     }
 
@@ -42,14 +42,14 @@ class SellerController extends Controller
     {
         $request->validate([
             'Nombre' => 'required',
-            'Genero'=> 'required',
+            'Genero' => 'required',
 
-         ]);
- 
-         /*$request->merge(['user_id'=> Auth::id()]);*/
-         seller::create($request->all());
- 
-         return redirect('/seller');
+        ]);
+
+        /*$request->merge(['user_id'=> Auth::id()]);*/
+        seller::create($request->all());
+
+        return redirect('/seller');
     }
 
     /**
@@ -85,15 +85,15 @@ class SellerController extends Controller
     {
         $request->validate([
             'Nombre' => 'required',
-            'Genero'=> 'required',
-        
-         ]);
+            'Genero' => 'required',
 
-         
-        
-         Seller::where('id', $seller->id)->update($request->except('_token','_method'));
+        ]);
 
-         return redirect('/seller');
+
+
+        Seller::where('id', $seller->id)->update($request->except('_token', '_method'));
+
+        return redirect('/seller');
     }
 
     /**

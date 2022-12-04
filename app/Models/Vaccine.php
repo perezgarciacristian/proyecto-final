@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccine extends Model
 {
     use HasFactory;
-    protected $fillable = ['Tipo', 'user_id', 'Descripcion', 'Componentes'];
-
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = ['Tipo', 'Descripcion', 'Componentes'];
 
     public function pets()
     {

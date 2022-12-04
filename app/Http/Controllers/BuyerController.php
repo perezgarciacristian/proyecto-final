@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class BuyerController extends Controller
 {
+    const HOME = '/buyer';
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +17,7 @@ class BuyerController extends Controller
      */
     public function index()
     {
-
-        $buyers = Auth::user()->buyers;
+        $buyers = Buyer::all();
         return view('comprador.compradorindex', compact('buyers'));
     }
 
@@ -45,15 +45,14 @@ class BuyerController extends Controller
             'Edad' => 'required',
             'Mascota' => 'required',
         ]);
-
         Buyer::create($request->all());
-        return redirect('/buyer');
+        return redirect(self::HOME);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
     public function show(Buyer $buyer)
@@ -76,7 +75,7 @@ class BuyerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Buyer $buyer)
@@ -86,22 +85,20 @@ class BuyerController extends Controller
             'Edad' => 'required',
             'Mascota' => 'required',
         ]);
-
-
         Buyer::where('id', $buyer->id)->update($request->except('_token', '_method'));
-
-        return redirect('/buyer');
+        return redirect(self::HOME);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comprador  $comprador
+     * @param  \App\Models\Buyer  $buyer
      * @return \Illuminate\Http\Response
      */
     public function destroy(Buyer $buyer)
     {
         $buyer->delete();
-        return redirect('/buyer');
+
+        return redirect(self::HOME);
     }
 }

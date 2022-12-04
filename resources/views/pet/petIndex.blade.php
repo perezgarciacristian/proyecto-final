@@ -15,7 +15,6 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Usuario</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Edad</th>
                 <th scope="col">Genero</th>
@@ -31,14 +30,11 @@
         @foreach ($pets as $pet)
             <tr>
                 <td>{{ $pet->id }}</td>
-                <td>{{ $pet->user->name }}</td>
                 <td>
                     <a href="/pet/{{ $pet->id }}">
                         {{ $pet->Nombre }}
                     </a>
                 </td>
-
-
                 <td>{{ $pet->Edad }}</td>
                 <td>{{ $pet->Genero }}</td>
                 <td>{{ $pet->Animal }}</td>

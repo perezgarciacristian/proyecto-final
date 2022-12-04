@@ -15,6 +15,10 @@ class PetController extends Controller
 
     const HOME = '/pet';
 
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +26,7 @@ class PetController extends Controller
      */
     public function index()
     {
-        $pets = Auth::user()->pets;
+        $pets = Pet::all();
 
         return view('pet.petIndex', compact('pets'));
     }

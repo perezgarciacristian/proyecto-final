@@ -1,32 +1,29 @@
 <x-template titulo='Formulario Mascotas'>
-
-
-    <form action="/pet" method="post" enctype="multipart/form-data">
+    <form action="/pet" method="post" enctype="multipart/form-data" class="container">
         @csrf
-
-        <div>
-            <label for="Nombre">Nombre:</label>
-            <input type="text" name="Nombre" value="{{ old('Nombre') ?? '' }}" required>
+        <div class="form-group">
+            <label for="Nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" name="Nombre" value="{{ old('Nombre') ?? '' }}" required>
         </div>
 
-        <div>
-            <label>Edad:</label>
-            <label for="">Menor</label>
-            <input type="radio" name="Edad" value="menor">
-            <label for="">Adulto</label>
-            <input type="radio" name="Edad" value="adulto" required>
+        <div class="form-group">
+            <label class="form-label">Edad:</label>
+            <input class="form-check-input" type="radio" name="Edad" value="menor">
+            <label class="form-label" for="">Menor</label>
+            <input class="form-check-input" type="radio" name="Edad" value="adulto" required>
+            <label class="form-label" for="">Adulto</label>
         </div>
-        <div>
-            <label>Genero:</label>
-            <label for="">M</label>
-            <input name="Genero" type="radio" value="M">
-            <label for="">F</label>
-            <input name="Genero"type="radio" value="F" required>
+        <div class="form-group">
+            <label class="form-label">Genero:</label>
+            <label class="form-label" for="">M</label>
+            <input class="form-check-input" name="Genero" type="radio" value="M">
+            <label class="form-label" for="">F</label>
+            <input class="form-check-input" name="Genero" type="radio" value="F" required>
         </div>
 
-        <div>
-            <label for="Animal">Animal:</label>
-            <select name="Animal" id="identified">
+        <div class="form-group">
+            <label class="form-label" for="Animal">Animal:</label>
+            <select name="Animal" id="identified" class="form-select">
                 <option value="Perro">Perro</option>
                 <option value="Gato">Gato</option>
                 <option value="Pez">Pez</option>
@@ -34,38 +31,38 @@
             </select>
         </div>
 
-        <div>
-            <label for="">Usuario</label>
-            <select name="user_id" id="user_id">
+        <div class="form-group">
+            <label class="form-label" for="">Usuario</label>
+            <select class="form-select" name="user_id" id="user_id">
                 @foreach ($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>
         </div>
 
-        <div>
-            <label for="">Comprador</label>
-            <select name="buyer_id" id="user_id">
+        <div class="form-group">
+            <label class="form-label" for="">Comprador</label>
+            <select class="form-select" name="buyer_id" id="user_id">
                 @foreach ($buyers as $buyer)
                     <option value="{{ $buyer->id }}">{{ $buyer->Nombre }}</option>
                 @endforeach
 
             </select>
         </div>
-        <div>
-            <label for="">Vendedor</label>
-            <select name="seller_id" id="user_id">
+        <div class="form-group">
+            <label class="form-label" for="">Vendedor</label>
+            <select class="form-select" name="seller_id" id="user_id">
                 @foreach ($sellers as $seller)
                     <option value="{{ $seller->id }}">{{ $seller->Nombre }}</option>
                 @endforeach
             </select>
         </div>
-        <div>
-            <label for="">Foto de la mascota</label>
-            <input type="file" name="archivo">
+        <div class="form-group">
+            <label class="form-label" for="">Foto de la mascota<span>Campo no obligatorio</span> </label>
+            <input class="form-control" type="file" name="archivo">
         </div>
 
-        <input type="submit" value="Registrar">
+        <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Registrar"></div>
 
     </form>
 

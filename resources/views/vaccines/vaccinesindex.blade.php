@@ -6,7 +6,7 @@
         <ul class="navbar-nav ms-auto">
             <li>
                 <a class="btn btn-outline-light" href="/vaccine/create" role="button">Añadir Vacuna</a>
-                <a class="btn btn-outline-light" href="/menu" role="button">INICIO</a>
+                <a class="btn btn-outline-light" href="/" role="button">INICIO</a>
             </li>
         </ul>
     </nav>

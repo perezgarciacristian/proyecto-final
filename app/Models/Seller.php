@@ -10,8 +10,8 @@ class Seller extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['Nombre', 'user_id', 'Genero',];
-    /*public $timestamps = false;*/
+    protected $fillable = ['Nombre', 'user_id', 'Genero'];
+
 
     public function user()
     {

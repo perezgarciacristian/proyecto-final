@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class BuyerController extends Controller
 {
     const HOME = '/buyer';
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,6 +49,7 @@ class BuyerController extends Controller
             'Edad' => 'required',
             'Mascota' => 'required',
         ]);
+        $request->merge(['user_id' => Auth::id()]);
         Buyer::create($request->all());
         return redirect(self::HOME);
     }
@@ -80,12 +85,14 @@ class BuyerController extends Controller
      */
     public function update(Request $request, Buyer $buyer)
     {
+        $this->authorize('update', $buyer);
         $request->validate([
             'Nombre' => 'required',
             'Edad' => 'required',
             'Mascota' => 'required',
         ]);
-        Buyer::where('id', $buyer->id)->update($request->except('_token', '_method'));
+        $request->merge(['user_id' => Auth::id()]);
+        Buyer::find($buyer->id)->update($request->except('_token', '_method'));
         return redirect(self::HOME);
     }
 
@@ -97,8 +104,8 @@ class BuyerController extends Controller
      */
     public function destroy(Buyer $buyer)
     {
+        $this->authorize('delete', $buyer);
         $buyer->delete();
-
         return redirect(self::HOME);
     }
 }

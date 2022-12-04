@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('pet_id')->constrained();
             $table->foreignId('buyer_id')->constrained()->onDelete('cascade');
             $table->foreignId('seller_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->date('date_s');
             $table->double('price');
         });

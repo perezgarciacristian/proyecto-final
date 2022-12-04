@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class SellerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +50,7 @@ class SellerController extends Controller
 
         ]);
 
-        /*$request->merge(['user_id'=> Auth::id()]);*/
+        $request->merge(['user_id' => Auth::id()]);
         seller::create($request->all());
 
         return redirect('/seller');
@@ -83,15 +87,14 @@ class SellerController extends Controller
      */
     public function update(Request $request, Seller $seller)
     {
+        $this->authorize('update', $seller);
         $request->validate([
             'Nombre' => 'required',
             'Genero' => 'required',
 
         ]);
-
-
-
-        Seller::where('id', $seller->id)->update($request->except('_token', '_method'));
+        $request->merge(['user_id' => Auth::id()]);
+        Seller::find($seller->id)->update($request->except('_token', '_method'));
 
         return redirect('/seller');
     }
@@ -104,6 +107,7 @@ class SellerController extends Controller
      */
     public function destroy(Seller $seller)
     {
+        $this->authorize('delete', $seller);
         $seller->delete();
         return redirect('/seller');
     }

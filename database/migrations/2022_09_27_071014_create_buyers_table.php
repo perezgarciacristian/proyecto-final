@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('buyers', function (Blueprint $table) {
             $table->id();
             $table->string('Nombre');
-            $table->string('Edad');
+            $table->integer('Edad');
             $table->string('Mascota');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();

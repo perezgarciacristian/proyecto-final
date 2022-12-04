@@ -1,18 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-template titulo="Información sobre la vacuna">
 
-  <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Info Vacunas</title>
-  </head>
+    <x-table>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Componentes</th>
+            <th scope="col">Usuario que lo creó</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Eliminar</th>
+        </tr>
+        <tr>
+            <td>{{ $vaccine->id }}</td>
+            <td>
+                {{ $vaccine->Tipo }}
+            </td>
+            <td>{{ $vaccine->Descripcion }}</td>
+            <td>{{ $vaccine->Componentes }}</td>
+            <td>{{ $vaccine->user->name }}</td>
+            <td>
+                @can('update', $vaccine)
+                    <x-link.edit url="/vaccine/{{ $vaccine->id }}/edit">Editar</x-link.edit>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
+            </td>
+            <td>
+                @can('delete', $vaccine)
+                    <x-form.delete url="/vaccine/{{ $vaccine->id }}"></x-form.delete>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
 
-  <body>
-     <h1>Información de los Vacunas</h1>
-     <h2>{{$vaccine->Tipo}}</h2>
-     <h2>{{$vaccine->Descripcion}}</h2>
-     <h2>{{$vaccine->Componentes}}</h2>
-  </body>
+            </td>
+        </tr>
 
-</html>
+        </td>
+
+    </x-table>
+</x-template>

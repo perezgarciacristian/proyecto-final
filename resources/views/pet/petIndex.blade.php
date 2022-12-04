@@ -15,7 +15,6 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Edad</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Animal</th>
                 <th scope="col">Mostrar</th>
@@ -27,7 +26,6 @@
                 <td>
                     {{ $pet->Nombre }}
                 </td>
-                <td>{{ $pet->Edad }}</td>
                 <td>{{ $pet->Genero }}</td>
                 <td>{{ $pet->Animal }}</td>
                 <td>

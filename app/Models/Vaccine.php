@@ -10,10 +10,15 @@ class Vaccine extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['Tipo', 'Descripcion', 'Componentes'];
+    protected $fillable = ['Tipo', 'Descripcion', 'Componentes', 'user_id'];
 
     public function pets()
     {
         return $this->belongsToMany(Pet::class);
+    }
+    //Muchos a uno
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

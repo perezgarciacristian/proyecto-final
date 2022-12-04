@@ -1,38 +1,26 @@
-<!DOCTYPE html >
-<html lang="es">
-  <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Editar Vacunas</title>
-   <link rel="stylesheet" href="/vaccine">
-  </head>
-  <body>
+<x-template titulo="Editar vacuna">
   
-  <form action="/vaccine/{{$vaccine->id}}" method="POST">
+  <form action="/vaccine/{{$vaccine->id}}" method="POST" enctype="multipart/form-data" class="container">
     @csrf
     @method('patch')
-    <div>
-    <label for="Tipo">Tipo:</label>
-    <select name="Tipo" id="identified">
+    <div class="form-group">
+    <label for="Tipo" class="form-label">Tipo:</label>
+    <select name="Tipo" id="identified" class="form-select">
         <option value="Vacuna Viva">Vacuna Viva</option>
         <option value="Vacuna Muerta">Vacuna Muerta</option>
         <option value="Vacuna diseño">Vacuna Diseño</option>
         <option value="Otra">Otra</option>
       </select>
     </div>
-
-    <div>
-    <label for="Descripcion">Descripcion:</label>	
-    <textarea name="Descripcion" id="identified" value="{{$vaccine->Descripcion}}"
-    rows="no_renglones"
-    cols="no_columnas">
-    </textarea>
+    <br>
+    <div class="form-group">
+    <label for="Descripcion" class="form-label">Descripcion:</label>	
+    <input type="text"  name="Descripcion" value="{{$vaccine->Descripcion}}" class="form-control">
     </div>
-
-    <div>
-    <label for="Componentes">Componentes:</label>
-    <select name="Componentes" id="identified">
+    <br>
+    <div class="form-group">
+    <label for="Componentes" class="form-label">Componentes:</label>
+    <select name="Componentes" id="identified" class="form-select">
         <option value="Antigenos">Antigenos</option>
         <option value="Adyuvantes">Adyuvantes</option>
         <option value="Inactivadores">Inactivadores</option>
@@ -42,10 +30,8 @@
     </div>
     
 
-  <div>
-  
-  <input type="submit" value="Editar"> 
+  <div class="text-center my-2">
+    <input class="btn btn-success" type="submit" value="Editar">
   </div>
 </form>
-  </body>
-</html>
+</x-template>

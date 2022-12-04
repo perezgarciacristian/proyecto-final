@@ -17,7 +17,14 @@ class BuyerController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         $buyers = Buyer::all();
+=======
+
+
+        $buyers = Buyer::all();
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
         return view('comprador.compradorindex', compact('buyers'));
     }
 
@@ -46,7 +53,14 @@ class BuyerController extends Controller
             'Mascota' => 'required',
         ]);
         Buyer::create($request->all());
+<<<<<<< HEAD
         return redirect(self::HOME);
+=======
+
+        return redirect(self::HOME);
+
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 
     /**
@@ -86,7 +100,15 @@ class BuyerController extends Controller
             'Mascota' => 'required',
         ]);
         Buyer::where('id', $buyer->id)->update($request->except('_token', '_method'));
+<<<<<<< HEAD
         return redirect(self::HOME);
+=======
+
+
+        return redirect(self::HOME);
+
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 
     /**
@@ -100,5 +122,9 @@ class BuyerController extends Controller
         $buyer->delete();
 
         return redirect(self::HOME);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 }

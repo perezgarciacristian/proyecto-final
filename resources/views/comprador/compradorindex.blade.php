@@ -1,5 +1,6 @@
 <x-template titulo='Listado de Compradores'>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       Comprador
@@ -52,6 +53,9 @@
             
          
 =======
+=======
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             Comprador
@@ -94,7 +98,10 @@
                         @csrf
                         @method('DELETE')
                         <input type="Submit" value="Eliminar">
+<<<<<<< HEAD
 >>>>>>> feature/pet
+=======
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
 
                     </form>
                 </td>
@@ -104,6 +111,7 @@
 
 
         </td>
+
     </table>
 
 </x-template>

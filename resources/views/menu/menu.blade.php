@@ -29,6 +29,7 @@
 
     <div class="wrap">
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 d-flex align-items-center">
@@ -80,6 +81,9 @@
             <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
           </div>
 =======
+=======
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
@@ -123,6 +127,7 @@
             </div>
         </div>
     </nav>
+
     <!-- END nav -->
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');"
         data-stellar-background-ratio="0.5">
@@ -136,7 +141,10 @@
                                 class="ion-ios-arrow-forward"></span></a></p>
                 </div>
             </div>
+<<<<<<< HEAD
 >>>>>>> feature/pet
+=======
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
         </div>
     </div>
 

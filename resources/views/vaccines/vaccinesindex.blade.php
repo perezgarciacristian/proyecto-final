@@ -1,5 +1,6 @@
 <x-template titulo='Listado de Vacunas'>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
       Vacunas
@@ -51,6 +52,9 @@
             
          
 =======
+=======
+
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             Vacunas
@@ -86,7 +90,10 @@
                 <td>{{ $vaccines->Descripcion }}</td>
                 <td>{{ $vaccines->Componentes }}</td>
                 <td><a href="/vaccine/{{ $vaccines->id }}/edit">Editar</a></td>
+<<<<<<< HEAD
 >>>>>>> feature/pet
+=======
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
 
 
                 <td>
@@ -103,5 +110,6 @@
 
 
         </td>
+
     </table>
 </x-template>

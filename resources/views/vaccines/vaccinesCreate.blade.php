@@ -2,12 +2,18 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    <form action="/vaccine" method="post">
     @csrf
 =======
     <form action="/vaccine" method="post">
         @csrf
 >>>>>>> feature/pet
+=======
+
+    <form action="/vaccine" method="post">
+        @csrf
+>>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
 
         <div>
             <label for="Tipo">Tipo:</label>
@@ -22,6 +28,7 @@
         <div>
             <label for="Descripcion">Descripcion:</label>
             <textarea name="Descripcion" id="identified" rows="no_renglones" cols="no_columnas">
+
     </textarea>
         </div>
 

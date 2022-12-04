@@ -110,10 +110,15 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
-            'archivo' => 'sometimes|image'
+            'archivo' => 'sometimes|image',
+            'eliminar' => 'sometimes|string'
         ]);
-
-        $pet = Pet::where('id', $pet->id)->update($request->except('_token', '_method'));
+        $request->merge(['pet_id' => $pet->id]);
+        if ($request->eliminar == 'y') {
+            $pet->archivo()->delete();
+            return redirect('/pet/{$pet}/edit');
+        }
+        Pet::find($pet->id)->update($request->except('_token', '_method', 'eliminar', 'archivo'));
         if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
             $ubicacion = $request->archivo->store('public');
             $archivo = new Archivo();
@@ -121,9 +126,9 @@ class PetController extends Controller
             $archivo->ubicacion = $ubicacion;
             $archivo->nombre_original = $request->archivo->getClientOriginalName();
             $archivo->mime = $request->archivo->getClientMimeType();
+            $pet->archivo()->delete();
             $pet->archivo()->save($archivo);
         }
-
         return redirect(self::HOME);
     }
 

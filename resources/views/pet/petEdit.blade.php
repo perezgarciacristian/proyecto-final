@@ -45,13 +45,15 @@
             <label for="">Imagen</label>
             @if (!empty($pet->archivo))
                 <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200px">
+                <label for="">Eliminar</label>
+                <input type="radio" name="Edad" value="no">
+                <label for="">No modificar</label>
+                <input type="radio" name="Edad" value="si" required checked>
             @else
-                <p>No hay ninguna foto</p>
+                <label for="">Archvivo</label>
+                <input type="file" name="archivo">
             @endif
-            <label for="">Eliminar</label>
-            <input type="radio" name="Edad" value="no">
-            <label for="">No modificar</label>
-            <input type="radio" name="Edad" value="si" required checked>
+
         </div>
         <div>
             <input type="submit" value="Editar">

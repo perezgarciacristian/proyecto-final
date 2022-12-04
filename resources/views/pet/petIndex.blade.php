@@ -37,8 +37,6 @@
                         {{ $pet->Nombre }}
                     </a>
                 </td>
-
-
                 <td>{{ $pet->Edad }}</td>
                 <td>{{ $pet->Genero }}</td>
                 <td>{{ $pet->Animal }}</td>

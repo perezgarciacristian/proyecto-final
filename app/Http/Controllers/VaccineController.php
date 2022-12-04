@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Vaccines;
+use App\Models\Vaccine;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class VaccineController extends Controller
 {
+    const HOME = '/vaccine';
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +17,7 @@ class VaccineController extends Controller
     public function index()
     {
 
-        $vaccines = Auth::user()->vaccines;
+        $vaccines = Vaccine::all();
 
         return view('vaccines.vaccinesindex', compact('vaccines'));
     }
@@ -48,9 +48,11 @@ class VaccineController extends Controller
         ]);
 
         /*$request->merge(['user_id'=> Auth::id()]);*/
-        vaccines::create($request->all());
+        vaccine::create($request->all());
 
-        return redirect('/vaccine');
+
+        return redirect(self::HOME);
+
     }
 
     /**
@@ -59,7 +61,7 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccines  $vaccines
      * @return \Illuminate\Http\Response
      */
-    public function show(Vaccines $vaccine)
+    public function show(Vaccine $vaccine)
     {
         return view('vaccines.vaccinesShow', compact('vaccine'));
     }
@@ -70,7 +72,7 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccines  $vaccines
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vaccines $vaccine)
+    public function edit(Vaccine $vaccine)
     {
         return view('vaccines.vaccinesedit', compact('vaccine'));
     }
@@ -82,7 +84,7 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccines  $vaccines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Vaccines $vaccine)
+    public function update(Request $request, Vaccine $vaccine)
     {
         //dd($request->all());
         $request->validate([
@@ -91,9 +93,11 @@ class VaccineController extends Controller
             'Componentes' => 'required',
         ]);
 
-        Vaccines::where('id', $vaccine->id)->update($request->except('_token', '_method'));
+        Vaccine::where('id', $vaccine->id)->update($request->except('_token', '_method'));
 
-        return redirect('/vaccine');
+
+        return redirect(self::HOME);
+
     }
 
     /**
@@ -102,9 +106,13 @@ class VaccineController extends Controller
      * @param  \App\Models\Vaccines  $vaccines
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vaccines $vaccine)
+    public function destroy(Vaccine $vaccine)
     {
         $vaccine->delete();
+
+        return redirect(self::HOME);
+
         return redirect('/vaccine');
+
     }
 }

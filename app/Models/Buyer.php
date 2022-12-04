@@ -8,15 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Buyer extends Model
 {
     use HasFactory;
-    protected $fillable = ['Nombre', 'user_id', 'Edad', 'Mascota'];
-
-    public function user()
+    protected $fillable = ['Nombre', 'Edad', 'Mascota'];
+    //Muchos a uno
+    public function sales()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function pets()
-    {
-        return $this->belongsToMany(Pet::class);
+        return $this->hasMany(Sale::class);
     }
 }

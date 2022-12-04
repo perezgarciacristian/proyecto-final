@@ -90,6 +90,7 @@
                             <p>No hay ninguna imagen</p>
                         @endif
                     </td>
+
                 </tr>
                 <tr>
                     <td align="center" width="50%" height="">

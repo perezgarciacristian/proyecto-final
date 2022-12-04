@@ -114,10 +114,6 @@ class PetController extends Controller
             'eliminar' => 'sometimes|string'
         ]);
         $request->merge(['pet_id' => $pet->id]);
-        if ($request->eliminar == 'y') {
-            $pet->archivo()->delete();
-            return redirect('/pet/{$pet}/edit');
-        }
         Pet::find($pet->id)->update($request->except('_token', '_method', 'eliminar', 'archivo'));
         if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
             $ubicacion = $request->archivo->store('public');

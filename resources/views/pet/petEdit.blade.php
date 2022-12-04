@@ -25,24 +25,58 @@
         <div>
             <label for="">Edad</label>
             <label for="">Menor</label>
-            <input type="radio" name="Edad" value="menor">
+            @if ($pet->Edad == 'menor')
+                <input type="radio" name="Edad" value="menor" checked>
+            @else
+                <input type="radio" name="Edad" value="menor">
+            @endif
             <label for="">Adulto</label>
-            <input type="radio" name="Edad" value="adulto" required>
+            @if ($pet->Edad == 'adulto')
+                <input type="radio" name="Edad" value="adulto" checked>
+            @else
+                <input type="radio" name="Edad" value="adulto">
+            @endif
         </div>
         <div>
             <label for="">Genero</label>
             <label for="">M</label>
-            <input name="Genero" type="radio" value="M">
+            @if ($pet->Genero == 'M')
+                <input name="Genero" type="radio" value="M" checked>
+            @else
+                <input name="Genero" type="radio" value="M">
+            @endif
+
             <label for="">F</label>
-            <input name="Genero"type="radio" value="F">
+            @if ($pet->Genero == 'F')
+                <input name="Genero"type="radio" value="F" checked>
+            @else
+                <input name="Genero"type="radio" value="F">
+            @endif
+
         </div>
         <div>
             <label for="Animal">Animal:</label>
             <select name="Animal" id="identified">
-                <option value="Perro">Perro</option>
-                <option value="Gato">Gato</option>
-                <option value="Pez">Pez</option>
-                <option value="Otro">Otro</option>
+                @if ($pet->Animal == 'Perro')
+                    <option value="Perro" selected>Perro</option>
+                @else
+                    <option value="Perro">Perro</option>
+                @endif
+                @if ($pet->Animal == 'Gato')
+                    <option value="Gato" selected>Gato</option>
+                @else
+                    <option value="Gato">Gato</option>
+                @endif
+                @if ($pet->Animal == 'Pez')
+                    <option value="Pez" selected>Pez</option>
+                @else
+                    <option value="Pez">Pez</option>
+                @endif
+                @if ($pet->Animal == 'Otro')
+                    <option value="Otro" selected>Otro</option>
+                @else
+                    <option value="Otro">Otro</option>
+                @endif
             </select>
         </div>
         <div>
@@ -56,6 +90,7 @@
                             <p>No hay ninguna imagen</p>
                         @endif
                     </td>
+
                 </tr>
                 <tr>
                     <td align="center" width="50%" height="">
@@ -64,6 +99,11 @@
                         <input type="file" name="archivo">
                     </td>
                     <td align="center">
+                        @if (!empty($pet->archivo))
+                            <a href="/pet/imagen/eliminar/{{ $pet->id }}">Eliminar</a>
+                        @else
+                            <p>No hay ninguna imagen</p>
+                        @endif
 
                     </td>
                 </tr>

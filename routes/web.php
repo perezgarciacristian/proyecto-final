@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\SitioController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\BuyerController;
@@ -30,6 +31,7 @@ Route::get('/Contacto/{codigo?}', [SitioController::class, 'Crush']);
 Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeFormContacto']);
 
 Route::resource('/pet', PetController::class);
+Route::get('/pet/imagen/eliminar/{pet}', [ArchivoController::class, 'delete']);
 
 Route::resource('/buyer', BuyerController::class)->middleware('auth');
 

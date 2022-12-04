@@ -20,8 +20,6 @@
                 <th scope="col">Genero</th>
                 <th scope="col">Animal</th>
                 <th scope="col">Foto</th>
-                <th scope="col">Vendedor</th>
-                <th scope="col">Vacuna</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
             </tr>

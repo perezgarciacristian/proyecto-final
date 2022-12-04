@@ -12,6 +12,22 @@
                 <li class="nav-item"><a href="/buyer" class="nav-link">Comprador</a></li>
                 <li class="nav-item"><a href="/seller" class="nav-link">Vendedor</a></li>
                 <li class="nav-item"><a href="/vaccine" class="nav-link">Vacunas</a></li>
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                        this.closest('form').submit(); "
+                            role="button">
+                            <i class="fas fa-sign-out-alt"></i>
+                            {{ __('Log Out') }}
+                        </a>
+                    </form>
+                @else
+                    <li><a class="nav-link" href="/login">Iniciar sesión</a></li>
+                    <li><a class="nav-link" href="/register">Registrarse</a></li>
+                @endauth
+
             </ul>
         </div>
     </div>

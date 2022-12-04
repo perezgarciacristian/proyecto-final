@@ -36,7 +36,7 @@
 
 
                 <td>
-                    <form action="/seller/{{ $seller->id }}" method="POST">
+                    <form action="/seller/{{ $seller->id }}" method="POST" enctype="multipart/form-data" class="container">
                         @csrf
                         @method('DELETE')
                         <input type="Submit" value="Eliminar">

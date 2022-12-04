@@ -11,7 +11,7 @@ class ArchivoController extends Controller
     public function delete(Pet $pet)
     {
         $pet->archivo()->delete();
-        $route = '/pet/' . str($pet->id . '/edit');
+        $route = '/pet/' . str($pet->id) . '/edit';
         return redirect($route);
     }
 }

@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 class VaccineController extends Controller
 {
     const HOME = '/vaccine';
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +56,6 @@ class VaccineController extends Controller
 
 
         return redirect(self::HOME);
-
     }
 
     /**
@@ -86,7 +89,7 @@ class VaccineController extends Controller
      */
     public function update(Request $request, Vaccine $vaccine)
     {
-        //dd($request->all());
+        $this->authorize('update', $vaccine);
         $request->validate([
             'Tipo' => 'required',
             'Descripcion' => 'required',
@@ -107,6 +110,7 @@ class VaccineController extends Controller
      */
     public function destroy(Vaccine $vaccine)
     {
+        $this->authorize('delete', $vaccine);
         $vaccine->delete();
 
         return redirect(self::HOME);

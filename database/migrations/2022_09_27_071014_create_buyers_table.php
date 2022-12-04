@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('Nombre');
             $table->string('Edad');
             $table->string('Mascota');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

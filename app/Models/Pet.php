@@ -10,9 +10,12 @@ class Pet extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['Nombre', 'Edad', 'Genero', 'Animal'];
-
-
+    protected $fillable = ['Nombre', 'Edad', 'Genero', 'Animal', 'user_id'];
+    // Uno a muchos
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     //Muchos a muchos
     public function buyers()
     {

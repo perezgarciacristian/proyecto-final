@@ -10,7 +10,7 @@ export default defineConfig({
                 'resources/css/materialize.css',
                 'resources/js/materialize.js',
                 'resources/css/bootstrap.css',
-                'resources/js/bootstrap.js',
+                'resources/js/bootstrap.bundle.js',
             ],
             refresh: [
                 ...refreshPaths,

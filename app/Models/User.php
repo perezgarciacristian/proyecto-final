@@ -64,12 +64,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Pet::class);
     }
 
-    public function seller()
+    public function sellers()
     {
         return $this->hasMany(Seller::class);
     }
+    public function sales()
+    {
+        return $this->hasMany(Sales::class);
+    }
 
-    public function buyer()
+    public function buyers()
     {
         return $this->hasMany(Buyer::class);
     }
@@ -79,4 +83,3 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Vaccine::class);
     }
 }
-

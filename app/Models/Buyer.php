@@ -10,10 +10,15 @@ class Buyer extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['Nombre', 'Edad', 'Mascota'];
+    protected $fillable = ['Nombre', 'Edad', 'Mascota', 'user_id'];
     //Muchos a uno
     public function sales()
     {
         return $this->hasMany(Sale::class);
+    }
+    // Uno a muchos
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Sale extends Model
 {
     use HasFactory;
-    protected $fillable = ['pet_id', 'buyer_id', 'seller_id', 'fecha_v'];
+    protected $fillable = ['pet_id', 'buyer_id', 'seller_id', 'fecha_v', 'user_id'];
     // Uno a muchos
     public function pet()
     {
@@ -21,5 +21,9 @@ class Sale extends Model
     public function buyer()
     {
         return $this->belongsTo(Seller::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

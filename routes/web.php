@@ -19,31 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
 
-    return view('welcome');
-});
+// Archivos
 
-Route::get('/landingpage', [SitioController::class, 'landingpage']);
-
-Route::get('/Contacto/{codigo?}', [SitioController::class, 'Crush']);
-
-Route::post('/recibe-form-Contacto/{codigo?}', [SitioController::class, 'recibeFormContacto']);
-
-Route::resource('/pet', PetController::class);
 Route::get('/pet/imagen/eliminar/{pet}', [ArchivoController::class, 'delete']);
+// Opciones
+Route::resource('/pet', PetController::class);
 
-Route::resource('/buyer', BuyerController::class)->middleware('auth');
+Route::resource('/buyer', BuyerController::class);
 
-Route::resource('/seller', SellerController::class)->middleware('auth');
+Route::resource('/seller', SellerController::class);
 
-Route::resource('/vaccine', VaccineController::class)->middleware('auth');
+Route::resource('/vaccine', VaccineController::class);
 
-
-Route::get('/landing', function () {
-
-    return view('landing');
-});
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -55,4 +43,4 @@ Route::middleware([
 });
 
 
-Route::get('/menu', [SitioController::class, 'menu']);
+Route::get('/', [SitioController::class, 'menu'])->name('home');

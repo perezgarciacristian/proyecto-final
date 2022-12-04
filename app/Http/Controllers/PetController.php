@@ -110,9 +110,19 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
+            'archivo' => 'sometimes|image'
         ]);
 
-        Pet::where('id', $pet->id)->update($request->except('_token', '_method'));
+        $pet = Pet::where('id', $pet->id)->update($request->except('_token', '_method'));
+        if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
+            $ubicacion = $request->archivo->store('public');
+            $archivo = new Archivo();
+            $archivo->pet_id = $request->pet_id;
+            $archivo->ubicacion = $ubicacion;
+            $archivo->nombre_original = $request->archivo->getClientOriginalName();
+            $archivo->mime = $request->archivo->getClientMimeType();
+            $pet->archivo()->save($archivo);
+        }
 
         return redirect(self::HOME);
     }

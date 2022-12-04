@@ -6,22 +6,9 @@
 
         <div class="form-group">
             <label for="Nombre" class="form-label">Nombre:</label>
-            <input type="text" name="Nombre" value="{{ old('Nombre') ?? '' }}" required>
+            <input class="form-control" type="text" name="Nombre" value="{{ old('Nombre') ?? '' }}" required>
             @error('Nombre')
                 <i>Por favor escriba un nombre</i>
-            @enderror
-        </div>
-
-        <div class="form-group">
-            <label>Edad:</label>
-            <input class="form-check-input" type="radio" name="Edad" value="menor" required
-                {{ old('Edad') == 'menor' ? 'checked' : '' }}>
-            <label for=""> Menor</label>
-            <input class="form-check-input" type="radio" name="Edad" value="adulto"
-                {{ old('Edad') == 'adulto' ? 'checked' : '' }}>
-            <label for="">Adulto</label>
-            @error('Edad')
-                <i>Por favor seleccione una edad</i>
             @enderror
         </div>
         <div class="form-group">
@@ -35,6 +22,13 @@
             </select>
             @error('Mascota')
                 <i>Por favor seleccione el tipo de mascota</i>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="Edad" class="form-label">Edad:</label>
+            <input class="form-control" type="number" name="Edad" value="{{ old('Edad') ?? '' }}" required>
+            @error('Edad')
+                <i>Por favor ingrese una edad mayor a 5 años</i>
             @enderror
         </div>
         <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Registrar"></div>

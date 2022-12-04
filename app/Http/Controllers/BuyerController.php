@@ -45,9 +45,9 @@ class BuyerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Nombre' => 'required',
-            'Edad' => 'required',
-            'Mascota' => 'required',
+            'Nombre' => 'required|string',
+            'Edad' => 'required|numeric|min:5|max:100',
+            'Mascota' => 'required|string',
         ]);
         $request->merge(['user_id' => Auth::id()]);
         Buyer::create($request->all());
@@ -87,9 +87,9 @@ class BuyerController extends Controller
     {
         $this->authorize('update', $buyer);
         $request->validate([
-            'Nombre' => 'required',
-            'Edad' => 'required',
-            'Mascota' => 'required',
+            'Nombre' => 'required|string',
+            'Edad' => 'required|numeric|min:5|max:100',
+            'Mascota' => 'required|string',
         ]);
         $request->merge(['user_id' => Auth::id()]);
         Buyer::find($buyer->id)->update($request->except('_token', '_method'));

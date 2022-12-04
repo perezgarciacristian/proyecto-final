@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Ganga Pets</title>
@@ -55,18 +55,40 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>Ganga Pets :V</a>
+            <a class="navbar-brand" href="/"></span>Ganga Pets</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="fa fa-bars"></span> Menu
+                <span class="fa fa-bars"></span> Menú
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="/" class="nav-link">Inicio</a></li>
                     <li class="nav-item"><a href="/pet" class="nav-link">Mascotas</a></li>
                     <li class="nav-item"><a href="/buyer" class="nav-link">Comprador</a></li>
                     <li class="nav-item"><a href="/seller" class="nav-link">Vendedor</a></li>
                     <li class="nav-item"><a href="/vaccine" class="nav-link">Vacunas</a></li>
+                    @auth
+
+                        <form method="POST" action="{{ route('logout') }}" class="collapse navbar-collapse">
+                            @csrf
+                            <div class="collapse navbar-collapse">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                            this.closest('form').submit(); "
+                                            role="button">
+                                            {{ __('Log Out') }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </form>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="/login">Iniciar sesión</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/register">Registrarse</a></li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -85,10 +107,9 @@
                                 class="ion-ios-arrow-forward"></span></a></p>
                 </div>
             </div>
-<<<<<<< HEAD
->>>>>>> feature/pet
-=======
->>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
+            <<<<<<< HEAD>>>>>>> feature/pet
+                =======
+                >>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
         </div>
     </div>
 

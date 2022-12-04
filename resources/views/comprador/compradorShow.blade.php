@@ -1,18 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-     <meta charset="UTF-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Info Compradores</title>
-  </head>
-
-  <body>
-     <h1>Información de los Compradores</h1>
-     <h2>{{$buyer->Nombre}}</h2>
-     <h2>{{$buyer->Edad}}</h2>
-     <h2>{{$buyer->Mascota}}</h2>
-  </body>
-
-</html>
+<x-template titulo="Información del comprador">
+    <x-table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Comprador</th>
+                <th scope="col">Usuario que lo creó</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Mascota</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{ $buyer->id }}</td>
+            <td>
+                {{ $buyer->Nombre }}
+            </td>
+            <td>{{ $buyer->user->name }}</td>
+            <td>{{ $buyer->Edad }}</td>
+            <td>{{ $buyer->Mascota }}</td>
+            <td>
+                @can('update', $buyer)
+                    <x-link.edit url="/buyer/{{ $buyer->id }}/edit"></x-link.edit>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
+            </td>
+            <td>
+                @can('delete', $buyer)
+                    <x-form.delete url="/buyer/{{ $buyer->id }}"></x-form.delete>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
+            </td>
+        </tr>
+        </td>
+    </x-table>
+</x-template>

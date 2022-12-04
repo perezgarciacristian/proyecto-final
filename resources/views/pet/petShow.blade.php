@@ -7,6 +7,7 @@
                 <th scope="col">Edad</th>
                 <th scope="col">Genero</th>
                 <th scope="col">Animal</th>
+                <th scope="col">Usuario que lo creó</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
@@ -20,6 +21,7 @@
             <td>{{ $pet->Edad }}</td>
             <td>{{ $pet->Genero }}</td>
             <td>{{ $pet->Animal }}</td>
+            <td>{{ $pet->user->name }}</td>
             <td>
                 @if (!empty($pet->archivo))
                     <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="150rem">

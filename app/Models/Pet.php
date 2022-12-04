@@ -37,6 +37,4 @@ class Pet extends Model
     {
         return $this->hasOne(Sale::class);
     }
-
-
 }

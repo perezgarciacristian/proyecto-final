@@ -6,48 +6,34 @@
         <ul class="navbar-nav ms-auto">
             <li>
                 <a class="btn btn-outline-light" href="/vaccine/create" role="button">Añadir Vacuna</a>
-                <a class="btn btn-outline-light" href="/" role="button">INICIO</a>
             </li>
         </ul>
     </nav>
-    <table class="table table-striped table-dark">
+    <x-table>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Tipo</th>
             <th scope="col">Descripcion</th>
             <th scope="col">Componentes</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Eliminar</th>
+            <th scope="col">Mostrar</th>
         </tr>
 
-        @foreach ($vaccines as $vaccines)
+        @foreach ($vaccines as $vaccine)
             <tr>
-                <td>{{ $vaccines->id }}</td>
-
+                <td>{{ $vaccine->id }}</td>
                 <td>
-                    <a href="/vaccines/{{ $vaccines->id }}">
-                        {{ $vaccines->Tipo }}
-                    </a>
+                    {{ $vaccine->Tipo }}
                 </td>
-
-
-                <td>{{ $vaccines->Descripcion }}</td>
-                <td>{{ $vaccines->Componentes }}</td>
-                <td><a href="/vaccine/{{ $vaccines->id }}/edit">Editar</a></td>
-
-
+                <td>{{ $vaccine->Descripcion }}</td>
+                <td>{{ $vaccine->Componentes }}</td>
                 <td>
-                    <form action="/vaccine/{{ $vaccines->id }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <input type="Submit" value="Eliminar">
-
-                    </form>
+                    <x-link.show url="/vaccine/{{ $vaccine->id }}">
+                        </x-link.shoe>
                 </td>
             </tr>
         @endforeach
 
         </td>
 
-    </table>
+    </x-table>
 </x-template>

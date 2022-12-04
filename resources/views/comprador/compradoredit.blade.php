@@ -12,16 +12,12 @@
         </div>
 
         <div class="form-group">
-            <label>Edad:</label>
-            <input class="form-check-input" type="radio" name="Edad" value="menor" required
-                {{ $buyer->Edad == 'menor' ? 'checked' : '' }}>
-            <label for=""> Menor</label>
-            <input class="form-check-input" type="radio" name="Edad" value="adulto"
-                {{ $buyer->Edad == 'adulto' ? 'checked' : '' }}>
-            <label for="">Adulto</label>
+            <label for="Edad" class="form-label">Edad:</label>
+            <input class="form-control" type="number" name="Edad" value="{{ $buyer->Edad ?? '' }}" required>
             @error('Edad')
-                <i>Por favor seleccione una edad</i>
+                <i>Por favor ingrese una edad mayor a 5 años</i>
             @enderror
+
         </div>
         <div class="form-group">
             <label for="Mascota" class="form-label">Mascota:</label>

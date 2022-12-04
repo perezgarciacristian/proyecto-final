@@ -52,10 +52,7 @@ class VaccineController extends Controller
 
 
         return redirect(self::HOME);
-<<<<<<< HEAD
-=======
 
->>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 
     /**
@@ -100,10 +97,6 @@ class VaccineController extends Controller
 
 
         return redirect(self::HOME);
-<<<<<<< HEAD
-=======
-
->>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 
     /**
@@ -117,11 +110,5 @@ class VaccineController extends Controller
         $vaccine->delete();
 
         return redirect(self::HOME);
-<<<<<<< HEAD
-=======
-
-        return redirect('/vaccine');
-
->>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
     }
 }

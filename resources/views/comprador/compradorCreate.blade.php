@@ -1,15 +1,4 @@
 <x-template titulo='Formulario Comprador'>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  
-  
-   <form action="/buyer" method="post">
-    @csrf
-=======
->>>>>>> feature/pet
-=======
-
->>>>>>> 3235312564fdaf37c5b07b449db06c6868b78e60
 
 
     <form action="/buyer" method="post">

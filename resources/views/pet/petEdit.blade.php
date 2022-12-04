@@ -10,8 +10,12 @@
 </head>
 
 <body>
-
-    <form action="/pet/{{ $pet->id }}" method="POST">
+    <h1>
+        @foreach ($errors->all() as $message)
+            {{ $message }}
+        @endforeach
+    </h1>
+    <form action="/pet/{{ $pet->id }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div>
@@ -42,18 +46,28 @@
             </select>
         </div>
         <div>
-            <label for="">Imagen</label>
-            @if (!empty($pet->archivo))
-                <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200px">
-                <label for="">Eliminar</label>
-                <input type="radio" name="Edad" value="no">
-                <label for="">No modificar</label>
-                <input type="radio" name="Edad" value="si" required checked>
-            @else
-                <label for="">Archvivo</label>
-                <input type="file" name="archivo">
-            @endif
+            <table border="1">
+                <caption>Imagen Mascota</caption>
+                <tr>
+                    <td colspan="2" align="center">
+                        @if (!empty($pet->archivo))
+                            <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200px">
+                        @else
+                            <p>No hay ninguna imagen</p>
+                        @endif
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" width="50%" height="">
+                        <label for="">Editar</label>
+                        <br>
+                        <input type="file" name="archivo">
+                    </td>
+                    <td align="center">
 
+                    </td>
+                </tr>
+            </table>
         </div>
         <div>
             <input type="submit" value="Editar">

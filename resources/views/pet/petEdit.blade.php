@@ -1,62 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mascotas</title>
-    <link rel="stylesheet" href="/mascotas">
-</head>
-
-<body>
-    <h1>
-        @foreach ($errors->all() as $message)
-            {{ $message }}
-        @endforeach
-    </h1>
-    <form action="/pet/{{ $pet->id }}" method="POST" enctype="multipart/form-data">
+<x-template titulo="Editar mascota">
+    <form action="/pet/{{ $pet->id }}" method="POST" enctype="multipart/form-data" class="container">
         @csrf
         @method('patch')
-        <div>
-            <label for="Nombre">Nombre:</label>
+        <div class="form-group">
+            <label class="form-label " for="Nombre">Nombre:</label>
             <input type="text" name="Nombre" value="{{ $pet->Nombre }}">
         </div>
-        <div>
-            <label for="">Edad</label>
-            <label for="">Menor</label>
+        <div class="form-group">
+            <label class="form-label" for="">Edad:</label>
+            <label class="form-label" for="">Menor</label>
             @if ($pet->Edad == 'menor')
-                <input type="radio" name="Edad" value="menor" checked>
+                <input class="form-check-input" type="radio" name="Edad" value="menor" checked>
             @else
-                <input type="radio" name="Edad" value="menor">
+                <input class="form-check-input" type="radio" name="Edad" value="menor">
             @endif
-            <label for="">Adulto</label>
+            <label class="form-label" for="">Adulto</label>
             @if ($pet->Edad == 'adulto')
-                <input type="radio" name="Edad" value="adulto" checked>
+                <input class="form-check-input" type="radio" name="Edad" value="adulto" checked>
             @else
-                <input type="radio" name="Edad" value="adulto">
+                <input class="form-check-input" type="radio" name="Edad" value="adulto">
             @endif
         </div>
-        <div>
-            <label for="">Genero</label>
-            <label for="">M</label>
+        <div class="form-group">
+            <label class="form-label" for="">Género:</label>
+            <label class="form-label" for="">M</label>
             @if ($pet->Genero == 'M')
-                <input name="Genero" type="radio" value="M" checked>
+                <input class="form-check-input" name="Genero" type="radio" value="M" checked>
             @else
-                <input name="Genero" type="radio" value="M">
+                <input class="form-check-input" name="Genero" type="radio" value="M">
             @endif
 
-            <label for="">F</label>
+            <label class="form-label" for="">F</label>
             @if ($pet->Genero == 'F')
-                <input name="Genero"type="radio" value="F" checked>
+                <input class="form-check-input" name="Genero"type="radio" value="F" checked>
             @else
-                <input name="Genero"type="radio" value="F">
+                <input class="form-check-input" name="Genero"type="radio" value="F">
             @endif
 
         </div>
-        <div>
-            <label for="Animal">Animal:</label>
-            <select name="Animal" id="identified">
+        <div class="form-group">
+            <label class="form-label" for="Animal">Animal:</label>
+            <select class="form-select" name="Animal" id="identified">
                 @if ($pet->Animal == 'Perro')
                     <option value="Perro" selected>Perro</option>
                 @else
@@ -79,13 +63,13 @@
                 @endif
             </select>
         </div>
-        <div>
-            <table border="1">
-                <caption>Imagen Mascota</caption>
+        <div class="form-group">
+            <x-table>
+                <caption>Imagen Mascota. Campo no obligatorio</caption>
                 <tr>
-                    <td colspan="2" align="center">
+                    <td colspan="2" class="text-center">
                         @if (!empty($pet->archivo))
-                            <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200px">
+                            <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200em">
                         @else
                             <p>No hay ninguna imagen</p>
                         @endif
@@ -93,12 +77,12 @@
 
                 </tr>
                 <tr>
-                    <td align="center" width="50%" height="">
-                        <label for="">Editar</label>
+                    <td width="50%">
+                        <label class="form-label" for="">Editar</label>
                         <br>
                         <input type="file" name="archivo">
                     </td>
-                    <td align="center">
+                    <td>
                         @if (!empty($pet->archivo))
                             <a href="/pet/imagen/eliminar/{{ $pet->id }}">Eliminar</a>
                         @else
@@ -107,12 +91,8 @@
 
                     </td>
                 </tr>
-            </table>
+            </x-table>
         </div>
-        <div>
-            <input type="submit" value="Editar">
-        </div>
+        <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Editar"></div>
     </form>
-</body>
-
-</html>
+</x-template>

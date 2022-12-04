@@ -59,7 +59,7 @@ class PetController extends Controller
             'Animal' => 'required',
             'archivo' => 'sometimes|image'
         ]);
-
+        $request->merge(['user_id' => Auth::id()]);
         $pet = Pet::create($request->all());
         if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
             $ubicacion = $request->archivo->store('public');
@@ -105,6 +105,7 @@ class PetController extends Controller
      */
     public function update(Request $request, Pet $pet)
     {
+        $this->authorize('update', $pet);
         $request->validate([
             'Nombre' => 'required',
             'Edad' => 'required',
@@ -113,6 +114,7 @@ class PetController extends Controller
             'archivo' => 'sometimes|image',
             'eliminar' => 'sometimes|string'
         ]);
+        $request->merge(['user_id' => Auth::id()]);
         $request->merge(['pet_id' => $pet->id]);
         Pet::find($pet->id)->update($request->except('_token', '_method', 'eliminar', 'archivo'));
         if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
@@ -136,6 +138,7 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
+        $this->authorize('delete', $pet);
         $pet->delete();
         return redirect(self::HOME);
     }

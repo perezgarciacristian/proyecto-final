@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,11 @@
     <title>Sistema</title>
     @vite('resources/css/bootstrap.css')
 </head>
+
 <body class="bg-body text-dark">
-    <h1>{{$titulo}}</h1>
-     {{ $slot }}
+    <x-navbar></x-navbar>
+    <h1 class="text-center">{{ $titulo }}</h1>
+    {{ $slot }}
 </body>
+
 </html>

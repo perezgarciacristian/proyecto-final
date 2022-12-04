@@ -1,19 +1,49 @@
-<!DOCTYPE html>
-<html lang="es">
+<x-template titulo="Registro de la mascota">
+    <x-table>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Animal</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>{{ $pet->id }}</td>
+            <td>
+                {{ $pet->Nombre }}
+            </td>
+            <td>{{ $pet->Edad }}</td>
+            <td>{{ $pet->Genero }}</td>
+            <td>{{ $pet->Animal }}</td>
+            <td>
+                @if (!empty($pet->archivo))
+                    <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="150rem">
+                @else
+                    <p>No hay ninguna foto</p>
+                @endif
+            </td>
+            <td>
+                @can('update', $pet)
+                    <x-link.edit url="/pet/{{ $pet->id }}/edit"></x-link.edit>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
+            </td>
+            <td>
+                @can('delete', $pet)
+                    <x-form.delete url="/pet/{{ $pet->id }}">
+                    </x-form.delete>
+                @else
+                    <p>Acción no permitida</p>
+                @endcan
+            </td>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info Animales</title>
-</head>
-
-<body>
-    <h1>Información de los Animales</h1>
-    <h2>{{ $pet->Nombre }}</h2>
-    <h2>{{ $pet->Edad }}</h2>
-    <h2>{{ $pet->Genero }}</h2>
-    <h2>{{ $pet->Animal }}</h2>
-</body>
-
-</html>
+        </tr>
+        </td>
+    </x-table>
+</x-template>

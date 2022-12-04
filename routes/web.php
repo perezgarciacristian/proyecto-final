@@ -43,4 +43,4 @@ Route::middleware([
 });
 
 
-Route::get('/', [SitioController::class, 'menu']);
+Route::get('/', [SitioController::class, 'menu'])->name('home');

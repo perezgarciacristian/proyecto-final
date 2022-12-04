@@ -5,12 +5,12 @@
         @method('patch')
         <div class="form-group">
             <label for="Nombre" class="form-label">Nombre:</label>
-            <input type="text" name="Nombre" value="{{ $buyer->Nombre }}" required>
+            <input type="text" name="Nombre" value="{{ $buyer->Nombre }}" class="form-control" required>
             @error('Nombre')
                 <i>Por favor escriba un nombre</i>
             @enderror
         </div>
-
+        <br>
         <div class="form-group">
             <label for="Edad" class="form-label">Edad:</label>
             <input class="form-control" type="number" name="Edad" value="{{ $buyer->Edad ?? '' }}" required>
@@ -19,6 +19,7 @@
             @enderror
 
         </div>
+        <br>
         <div class="form-group">
             <label for="Mascota" class="form-label">Mascota:</label>
             <select name="Mascota" id="identified" class="form-select" required>

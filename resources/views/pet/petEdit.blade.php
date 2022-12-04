@@ -5,17 +5,17 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Mascotas</title>
-   <link rel="stylesheet" href="/mascotas">
+   <link rel="stylesheet" href="/pet">
   </head>
   <body>
   
-   <form action="/mascotas/{{$mascota->id}}" method="POST">
+   <form action="/pet/{{$pet->id}}" method="POST">
     @csrf
     @method('patch')
     
     <div>
     <label for="Nombre">Nombre:</label>
-    <input type="text"  name="Nombre" value="{{$mascota->Nombre}}">
+    <input type="text"  name="Nombre" value="{{$pet->Nombre}}">
     </div>
     
     <div>

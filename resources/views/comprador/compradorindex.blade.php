@@ -1,4 +1,5 @@
 <x-template titulo='Listado de Compradores'>
+
     <nav class="navbar navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
             Comprador
@@ -50,6 +51,7 @@
 
 
         </td>
+
     </table>
 
 </x-template>

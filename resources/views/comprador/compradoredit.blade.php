@@ -5,16 +5,16 @@
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Editar Comprador</title>
-   <link rel="stylesheet" href="/comprador">
+   <link rel="stylesheet" href="/buyer">
   </head>
   <body>
   
-   <form action="/comprador/{{$comprador->id}}" method="post">
+   <form action="/buyer/{{$buyer->id}}" method="post">
     @csrf
     @method('patch')
     <div>
     <label for="Nombre">Nombre:</label>
-    <input type="text"  name="Nombre" value="{{$comprador->Nombre}}">
+    <input type="text"  name="Nombre" value="{{$buyer->Nombre}}">
     </div>
     
     <div>

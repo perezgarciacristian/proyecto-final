@@ -45,7 +45,7 @@
 
         <div>
             <label for="">Comprador</label>
-            <select name="comprador_id" id="user_id">
+            <select name="buyer_id" id="user_id">
                 @foreach ($buyers as $buyer)
                     <option value="{{ $buyer->id }}">{{ $buyer->Nombre }}</option>
                 @endforeach

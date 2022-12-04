@@ -1,6 +1,7 @@
 <x-template titulo='Formulario Vacunas'>
 
 
+
     <form action="/vaccine" method="post">
         @csrf
 
@@ -17,6 +18,7 @@
         <div>
             <label for="Descripcion">Descripcion:</label>
             <textarea name="Descripcion" id="identified" rows="no_renglones" cols="no_columnas">
+
     </textarea>
         </div>
 

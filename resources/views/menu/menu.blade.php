@@ -28,6 +28,7 @@
 <body>
 
     <div class="wrap">
+
         <div class="container">
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
@@ -71,6 +72,7 @@
             </div>
         </div>
     </nav>
+
     <!-- END nav -->
     <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');"
         data-stellar-background-ratio="0.5">

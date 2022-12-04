@@ -10,9 +10,9 @@
 
   <body>
      <h1>Información de los Compradores</h1>
-     <h2>{{$comprador->Nombre}}</h2>
-     <h2>{{$comprador->Edad}}</h2>
-     <h2>{{$comprador->Mascota}}</h2>
+     <h2>{{$buyer->Nombre}}</h2>
+     <h2>{{$buyer->Edad}}</h2>
+     <h2>{{$buyer->Mascota}}</h2>
   </body>
 
 </html>

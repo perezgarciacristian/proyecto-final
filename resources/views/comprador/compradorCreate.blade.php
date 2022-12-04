@@ -1,6 +1,7 @@
 <x-template titulo='Formulario Comprador'>
 
 
+
     <form action="/buyer" method="post">
         @csrf
 
@@ -40,3 +41,4 @@
 
     </form>
 </x-template>
+

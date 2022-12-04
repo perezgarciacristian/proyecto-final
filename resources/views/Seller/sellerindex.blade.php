@@ -1,7 +1,7 @@
 <x-template titulo='Listado de Vendedores'>
   <nav class="navbar navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-      Vacunas
+      Vendedor
     </a>
       <ul class="navbar-nav ms-auto">
           <li>

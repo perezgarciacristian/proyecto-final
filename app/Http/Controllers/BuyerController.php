@@ -18,7 +18,9 @@ class BuyerController extends Controller
     public function index()
     {
 
+
         $buyers = Buyer::all();
+
         return view('comprador.compradorindex', compact('buyers'));
     }
 
@@ -48,7 +50,10 @@ class BuyerController extends Controller
         ]);
 
         Buyer::create($request->all());
+
         return redirect(self::HOME);
+
+
     }
 
     /**
@@ -91,7 +96,10 @@ class BuyerController extends Controller
 
         Buyer::where('id', $buyer->id)->update($request->except('_token', '_method'));
 
+
         return redirect(self::HOME);
+
+
     }
 
     /**
@@ -103,6 +111,8 @@ class BuyerController extends Controller
     public function destroy(Buyer $buyer)
     {
         $buyer->delete();
+
         return redirect(self::HOME);
+
     }
 }

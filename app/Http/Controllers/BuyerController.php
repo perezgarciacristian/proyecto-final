@@ -32,8 +32,8 @@ class BuyerController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('comprador.compradorCreate', compact('users'));
+
+        return view('comprador.compradorCreate');
     }
 
     /**

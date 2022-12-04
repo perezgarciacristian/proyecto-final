@@ -21,7 +21,7 @@ class BuyerController extends Controller
      */
     public function index()
     {
-        $buyers = Buyer::all();
+        $buyers = Buyer::with('user')->get();
         return view('comprador.compradorindex', compact('buyers'));
     }
 

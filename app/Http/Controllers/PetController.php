@@ -124,15 +124,21 @@ class PetController extends Controller
         $request->merge(['user_id' => Auth::id()]);
         $request->merge(['pet_id' => $pet->id]);
         Pet::find($pet->id)->update($request->except('_token', '_method', 'eliminar', 'archivo'));
-        if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
-            $ubicacion = $request->archivo->store('public');
-            $archivo = new Archivo();
-            $archivo->pet_id = $request->pet_id;
-            $archivo->ubicacion = $ubicacion;
-            $archivo->nombre_original = $request->archivo->getClientOriginalName();
-            $archivo->mime = $request->archivo->getClientMimeType();
-            $pet->archivo()->delete();
-            $pet->archivo()->save($archivo);
+        if (!empty($request->file('archivo'))) {
+            $fileSize = count($request->archivo);
+            $i = 0;
+            while ($i < $fileSize) {
+                if ($request->file('archivo')[$i]->isValid()) {
+                    $ubicacion = $request->archivo[$i]->store('public');
+                    $archivo = new Archivo();
+                    $archivo->pet_id = $request->pet_id;
+                    $archivo->ubicacion = $ubicacion;
+                    $archivo->nombre_original = $request->archivo[$i]->getClientOriginalName();
+                    $archivo->mime = $request->archivo[$i]->getClientMimeType();
+                    $archivo->save();
+                }
+                $i += 1;
+            }
         }
         return redirect(self::HOME);
     }

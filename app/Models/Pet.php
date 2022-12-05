@@ -32,9 +32,9 @@ class Pet extends Model
         return $this->belongsToMany(Vaccine::class);
     }
     //Uno a uno
-    public function archivo()
+    public function archivos()
     {
-        return $this->hasOne(Archivo::class);
+        return $this->hasMany(Archivo::class);
     }
     public function sale()
     {

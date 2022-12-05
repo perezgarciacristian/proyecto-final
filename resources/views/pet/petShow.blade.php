@@ -23,8 +23,10 @@
             <td>{{ $pet->Animal }}</td>
             <td>{{ $pet->user->name }}</td>
             <td>
-                @if (!empty($pet->archivo))
-                    <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="150rem">
+                @if (!empty($pet->archivos))
+                    @foreach ($pet->archivos as $archivo)
+                        <img src="{{ \Storage::url($archivo->ubicacion) }}" alt="" width="150rem">
+                    @endforeach
                 @else
                     <p>No hay ninguna foto</p>
                 @endif

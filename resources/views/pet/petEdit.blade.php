@@ -4,7 +4,7 @@
         @method('patch')
         <div class="form-group">
             <label class="form-label" for="Nombre">Nombre:</label>
-            <input type="text" name="Nombre" value="{{ $pet->Nombre }}">
+            <input class="form-control" type="text" name="Nombre" value="{{ $pet->Nombre }}">
         </div>
         <div class="form-group">
             <label class="form-label" for="">Edad:</label>
@@ -63,36 +63,48 @@
                 @endif
             </select>
         </div>
-        <div class="form-group">
-            <x-table>
-                <caption>Imagen Mascota. Campo no obligatorio</caption>
-                <tr>
-                    <td colspan="2" class="text-center">
-                        @if (!empty($pet->archivo))
-                            <img src="{{ \Storage::url($pet->archivo->ubicacion) }}" alt="" width="200em">
-                        @else
-                            <p>No hay ninguna imagen</p>
-                        @endif
-                    </td>
 
-                </tr>
-                <tr>
-                    <td width="50%">
-                        <label class="form-label" for="">Editar</label>
-                        <br>
-                        <input type="file" name="archivo">
-                    </td>
-                    <td>
-                        @if (!empty($pet->archivo))
-                            <a href="/pet/imagen/eliminar/{{ $pet->id }}">Eliminar</a>
-                        @else
-                            <p>No hay ninguna imagen</p>
-                        @endif
-
-                    </td>
-                </tr>
-            </x-table>
-        </div>
         <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Editar"></div>
     </form>
+    <div class="form-group">
+        <x-table>
+            <caption>Imagen Mascota. Campo no obligatorio</caption>
+
+            <tr>
+                <th class="text-center">
+                    imagen
+                </th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+
+            </tr>
+            @if (!empty($pet->archivos))
+                @foreach ($pet->archivos as $archivo)
+                    <tr>
+                        <td>
+                            <img src="{{ \Storage::url($archivo->ubicacion) }}" alt="" width="200em">
+                        </td>
+                        <td width="50%">
+                            <div>
+                                <form action="/pet/imagen/update/{{ $archivo->id }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <label class="form-label" for="">Editar</label>
+                                    <br>
+                                    <input type="file" name="archivo">
+                                    <input type="submit" value="Actualizar">
+                                    <input type="hidden" name="pet_id" value="{{ $pet->id }}">
+                                </form>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="/pet/imagen/eliminar/{{ $pet->id }}">Eliminar</a>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
+        </x-table>
+        <label class="form-label" for="">Subir nuevos archivos</label>
+        <input class="form-control" type="file" name="archivos[]" multiple>
+    </div>
 </x-template>

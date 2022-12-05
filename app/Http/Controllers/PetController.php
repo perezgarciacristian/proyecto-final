@@ -57,18 +57,25 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
-            'archivo' => 'sometimes|image'
+            'archivo.*' => 'sometimes|image'
         ]);
         $request->merge(['user_id' => Auth::id()]);
         $pet = Pet::create($request->all());
-        if (!empty($request->file('archivo')) && $request->file('archivo')->isValid()) {
-            $ubicacion = $request->archivo->store('public');
-            $archivo = new Archivo();
-            $archivo->pet_id = $request->pet_id;
-            $archivo->ubicacion = $ubicacion;
-            $archivo->nombre_original = $request->archivo->getClientOriginalName();
-            $archivo->mime = $request->archivo->getClientMimeType();
-            $pet->archivo()->save($archivo);
+        if (!empty($request->file('archivo'))) {
+            $fileSize = count($request->archivo);
+            $i = 0;
+            while ($i < $fileSize) {
+                if ($request->file('archivo')[$i]->isValid()) {
+                    $ubicacion = $request->archivo[$i]->store('public');
+                    $archivo = new Archivo();
+                    $archivo->pet_id = $request->pet_id;
+                    $archivo->ubicacion = $ubicacion;
+                    $archivo->nombre_original = $request->archivo[$i]->getClientOriginalName();
+                    $archivo->mime = $request->archivo[$i]->getClientMimeType();
+                    $pet->archivos()->save($archivo);
+                }
+                $i += 1;
+            }
         }
 
         return redirect(self::HOME);
@@ -111,8 +118,8 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
-            'archivo' => 'sometimes|image',
-            'eliminar' => 'sometimes|string'
+            'archivo.*' => 'sometimes|image',
+            'eliminar' => 'sometimes|string',
         ]);
         $request->merge(['user_id' => Auth::id()]);
         $request->merge(['pet_id' => $pet->id]);

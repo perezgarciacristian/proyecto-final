@@ -30,24 +30,16 @@
                 <option value="Otro">Otro</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label class="form-label" for="">Usuario</label>
-            <select class="form-select" name="user_id" id="user_id">
-                @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
         <div class="form-group">
             <label class="form-label" for="">Comprador</label>
             <select class="form-select" name="buyer_id" id="user_id">
                 @foreach ($buyers as $buyer)
                     <option value="{{ $buyer->id }}">{{ $buyer->Nombre }}</option>
                 @endforeach
-
             </select>
+            @error('buyer_id')
+                {{ $message->buyer_id }}
+            @enderror
         </div>
         <div class="form-group">
             <label class="form-label" for="">Vendedor</label>
@@ -56,10 +48,19 @@
                     <option value="{{ $seller->id }}">{{ $seller->Nombre }}</option>
                 @endforeach
             </select>
+            @error('seller_id')
+                {{ $message->seller_id }}
+            @enderror
         </div>
         <div class="form-group">
             <label class="form-label" for="">Foto de la mascota<span>Campo no obligatorio</span> </label>
-            <input class="form-control" type="file" name="archivo">
+            <input class="form-control" type="file" name="archivo[]" multiple>
+            @if ($errors->has('archivo[]'))
+                {{ $errors->get('archivo.*') }}
+                {{-- @foreach ($errors->get('archivo.*') as archivo)
+                    {{ $message->archivo }}
+                @endforeach --}}
+            @endif
         </div>
 
         <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Registrar"></div>

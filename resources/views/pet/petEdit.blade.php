@@ -63,6 +63,22 @@
                 @endif
             </select>
         </div>
+        <div class="form-group">
+            <label class="form-label" for="vaccine_id">Vacunas</label>
+            <select class="form-select" name="vaccine_id" id="vaccine_id" required>
+                @foreach ($vaccines as $vaccine)
+                    <option value="{{ $vaccine->id }}">{{ $vaccine->Tipo }}</option>
+                @endforeach
+            </select>
+            @error('vaccine_id')
+                {{ $message->vaccine_id }}
+            @enderror
+        </div>
+        <div>
+            <label class="form-label" for="vaccine_id">Lote</label>
+            <input type="text" class="form-control" name="lote" value="{{ old('lote') ?? '' }}" required>
+
+        </div>
         <div class="form-group"><label class="form-label" for="">Subir nuevos archivos</label>
             <input class="form-control" type="file" name="archivo[]" multiple>
         </div>

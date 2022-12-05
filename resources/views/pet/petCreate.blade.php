@@ -8,17 +8,21 @@
 
         <div class="form-group">
             <label class="form-label">Edad:</label>
-            <input class="form-check-input" type="radio" name="Edad" value="menor">
+            <input class="form-check-input" type="radio" name="Edad" value="menor"
+                {{ old('Edad') == 'menor' ? 'checked' : '' }}>
             <label class="form-label" for="">Menor</label>
-            <input class="form-check-input" type="radio" name="Edad" value="adulto" required>
+            <input {{ old('Edad') == 'adulto' ? 'checked' : '' }} class="form-check-input" type="radio" name="Edad"
+                value="adulto" required>
             <label class="form-label" for="">Adulto</label>
         </div>
         <div class="form-group">
             <label class="form-label">Genero:</label>
             <label class="form-label" for="">M</label>
-            <input class="form-check-input" name="Genero" type="radio" value="M">
+            <input {{ old('Genero') == 'M' ? 'checked' : '' }} class="form-check-input" name="Genero" type="radio"
+                value="M">
             <label class="form-label" for="">F</label>
-            <input class="form-check-input" name="Genero" type="radio" value="F" required>
+            <input {{ old('Genero') == 'F' ? 'checked' : '' }} class="form-check-input" name="Genero" type="radio"
+                value="F" required>
         </div>
 
         <div class="form-group">
@@ -53,14 +57,27 @@
             @enderror
         </div>
         <div class="form-group">
-            <label class="form-label" for="">Foto de la mascota<span>Campo no obligatorio</span> </label>
+            <label class="form-label" for="vaccine_id">Vacunas</label>
+            <select class="form-select" name="vaccine_id" id="vaccine_id">
+                @foreach ($vaccines as $vaccine)
+                    <option value="{{ $vaccine->id }}">{{ $vaccine->Tipo }}</option>
+                @endforeach
+            </select>
+            @error('vaccine_id')
+                {{ $message->vaccine_id }}
+            @enderror
+        </div>
+        <div>
+            <label class="form-label" for="vaccine_id">Lote</label>
+            <input type="text" class="form-control" name="lote" value="{{ old('lote') ?? '' }}" required>
+
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="">Foto de la mascota.<span> Campo no obligatorio</span> </label>
             <input class="form-control" type="file" name="archivo[]" multiple>
-            @if ($errors->has('archivo[]'))
-                {{ $errors->get('archivo.*') }}
-                {{-- @foreach ($errors->get('archivo.*') as archivo)
-                    {{ $message->archivo }}
-                @endforeach --}}
-            @endif
+            @error('archivo.*')
+                <p class="alert alert-danger my-2">Los archivos deben ser imagenes</p>
+            @enderror
         </div>
 
         <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Registrar"></div>

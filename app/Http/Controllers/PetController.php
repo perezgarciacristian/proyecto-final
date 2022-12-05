@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Buyer;
 use App\Models\Seller;
+use App\Models\Vaccine;
 
 class PetController extends Controller
 {
@@ -38,10 +39,10 @@ class PetController extends Controller
      */
     public function create()
     {
-        $users = User::all();
+        $vaccines = Vaccine::all();
         $buyers = Buyer::all();
         $sellers = Seller::all();
-        return view('pet.petCreate', compact('users', 'buyers', 'sellers'));
+        return view('pet.petCreate', compact('vaccines', 'buyers', 'sellers'));
     }
 
     /**
@@ -57,10 +58,12 @@ class PetController extends Controller
             'Edad' => 'required',
             'Genero' => 'required',
             'Animal' => 'required',
-            'archivo.*' => 'sometimes|image'
+            'archivo.*' => 'sometimes|image',
+            'lote' => 'required',
         ]);
         $request->merge(['user_id' => Auth::id()]);
         $pet = Pet::create($request->all());
+        $pet->vaccines()->syncWithoutDetaching([$request->vaccine_id => ['lote' => $request->lote]]);
         if (!empty($request->file('archivo'))) {
             $fileSize = count($request->archivo);
             $i = 0;
@@ -100,7 +103,8 @@ class PetController extends Controller
      */
     public function edit(Pet $pet)
     {
-        return view('pet.petEdit', compact('pet'));
+        $vaccines = Vaccine::all();
+        return view('pet.petEdit', compact('pet', 'vaccines'));
     }
 
     /**
@@ -124,6 +128,7 @@ class PetController extends Controller
         $request->merge(['user_id' => Auth::id()]);
         $request->merge(['pet_id' => $pet->id]);
         Pet::find($pet->id)->update($request->except('_token', '_method', 'eliminar', 'archivo'));
+        $pet->vaccines()->syncWithoutDetaching([$request->vaccine_id => ['lote' => $request->lote]]);
         if (!empty($request->file('archivo'))) {
             $fileSize = count($request->archivo);
             $i = 0;

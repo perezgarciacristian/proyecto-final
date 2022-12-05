@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pet_vaccine', function (Blueprint $table) {
             $table->foreignId('pet_id')->constrained();
             $table->foreignId('vaccine_id')->constrained()->onDelete('cascade');
+            $table->string('lote');
         });
     }
 

@@ -29,7 +29,7 @@ class Pet extends Model
 
     public function vaccines()
     {
-        return $this->belongsToMany(Vaccine::class)->withPivot('active', 'created_by');
+        return $this->belongsToMany(Vaccine::class)->withPivot('lote');
     }
     //Uno a uno
     public function archivos()

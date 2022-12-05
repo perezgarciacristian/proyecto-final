@@ -63,20 +63,20 @@
                 @endif
             </select>
         </div>
-
+        <div class="form-group"><label class="form-label" for="">Subir nuevos archivos</label>
+            <input class="form-control" type="file" name="archivo[]" multiple>
+        </div>
         <div class="text-center my-2"><input class="btn btn-success" type="submit" value="Editar"></div>
     </form>
     <div class="form-group">
         <x-table>
             <caption>Imagen Mascota. Campo no obligatorio</caption>
-
             <tr>
                 <th class="text-center">
                     imagen
                 </th>
                 <th>Editar</th>
                 <th>Eliminar</th>
-
             </tr>
             @if (!empty($pet->archivos))
                 @foreach ($pet->archivos as $archivo)
@@ -91,20 +91,19 @@
                                     @csrf
                                     <label class="form-label" for="">Editar</label>
                                     <br>
-                                    <input type="file" name="archivo">
-                                    <input type="submit" value="Actualizar">
+                                    <input class="form-control" type="file" name="archivo"><br>
+                                    <input class="btn btn-info" type="submit" value="Actualizar">
                                     <input type="hidden" name="pet_id" value="{{ $pet->id }}">
                                 </form>
                             </div>
                         </td>
                         <td>
-                            <a href="/pet/imagen/eliminar/{{ $pet->id }}">Eliminar</a>
+                            <a href="/pet/imagen/eliminar/{{ $archivo->id }}">Eliminar</a>
                         </td>
                     </tr>
                 @endforeach
             @endif
         </x-table>
-        <label class="form-label" for="">Subir nuevos archivos</label>
-        <input class="form-control" type="file" name="archivos[]" multiple>
+
     </div>
 </x-template>

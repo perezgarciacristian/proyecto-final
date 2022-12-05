@@ -22,8 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 // Archivos
 
-Route::get('/pet/imagen/eliminar/{pet}', [ArchivoController::class, 'delete']);
-Route::post('/pet/imagen/update/{file}', [ArchivoController::class, 'update']);
+Route::get('/pet/imagen/eliminar/{archivo}', [ArchivoController::class, 'delete']);
+Route::post('/pet/imagen/update/{archivo}', [ArchivoController::class, 'update']);
 // Opciones
 Route::resource('/pet', PetController::class);
 
